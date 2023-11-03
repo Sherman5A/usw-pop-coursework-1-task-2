@@ -45,7 +45,6 @@ public class Salary {
         taxBands.put(new BigDecimal("12570"), new BigDecimal("0.00"));
         taxBands.put(new BigDecimal("50270"), new BigDecimal("0.20"));
         taxBands.put(new BigDecimal("125140"), new BigDecimal("0.40"));
-        // TODO: Better implementation of this at later date
         taxBands.put(new BigDecimal("-1"), new BigDecimal("0.45"));
         return applyPaymentBands(grossSalary, taxBands);
     }
