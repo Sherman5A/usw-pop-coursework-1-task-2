@@ -39,47 +39,18 @@ public class Salary {
         BigDecimal taxTotal = new BigDecimal("0");
         BigDecimal previousBracket = new BigDecimal("0");
         for (Map.Entry<BigDecimal, BigDecimal> entry : taxRates.entrySet()) {
-
-            //            System.out.printf("New rate %s, comparing to %s\n", entry.getKey(), yearlySalary);
-
             if (entry.getKey().compareTo(BigDecimal.ZERO) < 0) {
                 taxTotal = taxTotal.add(yearlySalary.subtract(previousBracket).multiply(entry.getValue()));
             } else if (yearlySalary.compareTo(entry.getKey()) > 0) {
-//                System.out.println();
-//                System.out.printf("%s is lower than %s - Applying %s tax to %s \n", entry.getKey(), yearlySalary, entry.getValue(), (entry.getKey().subtract(previousBracket)));
                 taxTotal = taxTotal.add((entry.getKey().subtract(previousBracket)).multiply(entry.getValue()));
-//                System.out.printf("Current tax: %s\n\n", taxTotal);
 
             } else if ((yearlySalary.compareTo(previousBracket) > 0) && (yearlySalary.compareTo(entry.getKey()) < 0)) {
-//                System.out.printf("In the middle of the bracket - Applying %s tax\n", entry.getValue());
                 BigDecimal bracketAmount = yearlySalary.subtract(previousBracket);
                 taxTotal = taxTotal.add(bracketAmount.multiply(entry.getValue()));
-//                System.out.printf("Current tax: %s\n\n", taxTotal);
                 break;
-
             }
             previousBracket = entry.getKey();
-
-//            // Catches rates that limits approach infinity as they are defined by -1
-//            if (entry.getKey().compareTo(BigDecimal.ZERO) < 0) {
-//                taxTotal = taxTotal.add(salaryInThisBracket.multiply(entry.getValue()));
-//            }
-//
-//            salaryAfterBracket = salaryAfterBracket.subtract(entry.getKey());
-//            boolean finalBracket = (salaryAfterBracket.compareTo(BigDecimal.ZERO) < 0);
-//            if (finalBracket) {
-//                taxTotal = taxTotal.add(salaryInThisBracket.multiply(entry.getValue()));
-//                break;
-//            }
-//            salaryInThisBracket = salaryAfterBracket;
-//
-//            taxTotal = taxTotal.add(entry.getKey().multiply(entry.getValue()));
-
         }
-
-//        System.out.println("The end");
-//        System.out.println(taxTotal);
-
         return taxTotal;
     }
 
