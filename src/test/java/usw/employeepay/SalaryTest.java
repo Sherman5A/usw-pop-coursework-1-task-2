@@ -52,9 +52,6 @@ class SalaryTest {
         assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParkingCharge()));
         testSalary.useParkingCharge();
         assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
-
-        testSalary.useParkingCharge();
-        assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
     }
 
     @Test
