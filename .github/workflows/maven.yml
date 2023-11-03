@@ -27,11 +27,8 @@ jobs:
         java-version: '19'
         distribution: 'oracle'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Test
-      run: mvn -B -Dmaven.test.failure.ignore=true test
-
+    - name: Build & test with Maven
+      run: mvn -B package -Dmaven.test.failure.ignore=true --file pom.xml test
     - name: Report
       uses: dorny/test-reporter@v1
       if: always()
