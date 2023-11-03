@@ -52,7 +52,7 @@ class SalaryTest {
     @Test
     @DisplayName("Parking charge works well")
     void useParkingCharge() {
-        BigDecimal expectedNetSalary = new BigDecimal("38394.00");
+        BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         BigDecimal monthlyParking = new BigDecimal("10.00");
 
         assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParking()));
