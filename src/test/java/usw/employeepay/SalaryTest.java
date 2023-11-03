@@ -33,14 +33,20 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Tax Calculation")
-    public void taxCalculation() {
-        BigDecimal expectedTaxPaid = new BigDecimal("6486");
-        assertEquals(0, expectedTaxPaid.compareTo(testSalary.getTaxAmount()));
+    @DisplayName("Calculate Tax")
+    public void calculateTax() {
+        BigDecimal expectedTax = new BigDecimal("6486");
+        assertEquals(0, expectedTax.compareTo(testSalary.getTotalTax()));
 
-        BigDecimal expectedTaxPaidLarge = new BigDecimal("44175");
-//        System.out.println(testSalaryLarge.getTaxAmount());
-        assertEquals(0, expectedTaxPaidLarge.compareTo(testSalaryLarge.getTaxAmount()));
+        BigDecimal expectedTaxLarge = new BigDecimal("44175");
+        assertEquals(0, expectedTaxLarge.compareTo(testSalaryLarge.getTotalTax()));
+    }
+
+    @Test
+    @DisplayName("Calculate national insurance")
+    void calculateNI() {
+        BigDecimal expectedNI = new BigDecimal("4251.84");
+        assertEquals(0, expectedNI.compareTo(testSalary.getTotalNI()));
     }
 
     @Test
@@ -49,8 +55,8 @@ class SalaryTest {
         BigDecimal expectedNetSalary = new BigDecimal("38394.00");
         BigDecimal monthlyParking = new BigDecimal("10.00");
 
-        assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParkingCharge()));
-        testSalary.useParkingCharge();
+        assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParking()));
+        testSalary.applyParkingCharge();
         assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
     }
 
@@ -60,7 +66,7 @@ class SalaryTest {
         BigDecimal monthlyParking = new BigDecimal("30.00");
         BigDecimal expectedNetSalary = new BigDecimal("38154.00");
 
-        testSalary.setParkingCharge(monthlyParking);
-        assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParkingCharge()));
+        testSalary.setParkingChargeAmount(monthlyParking);
+        assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParking()));
     }
 }

@@ -9,23 +9,34 @@ public class Salary {
 
     // BigDecimal used as we are working with money
     // Avoids errors concerning floating-point representation
-    private BigDecimal yearlySalary;
-    private BigDecimal taxableAmount;
-    private BigDecimal taxAmount;
+    private BigDecimal grossSalary;
+    private BigDecimal totalTax;
+    private BigDecimal totalNI;
+    private BigDecimal totalDeductions;
+    private BigDecimal teachersPension;
     private BigDecimal netSalary;
     private boolean parkingCharge = false;
-    private BigDecimal monthlyParkingCharge = new BigDecimal("10.00");
+    private BigDecimal monthlyParking = new BigDecimal("10.00");
 
-    public Salary(BigDecimal yearlySalary) {
-        setSalary(yearlySalary);
+    public Salary(BigDecimal grossSalary) {
+        setSalary(grossSalary);
     }
 
     public void setSalary(BigDecimal yearlySalary) {
-        this.yearlySalary = yearlySalary;
+        this.grossSalary = yearlySalary;
         netSalary = yearlySalary;
-        taxableAmount = this.yearlySalary.subtract(new BigDecimal("12570"));
-        taxAmount = calculateTax();
-        netSalary = netSalary.subtract(taxAmount);
+        totalTax = calculateTax();
+        netSalary = netSalary.subtract(totalTax);
+        totalNI = calculateNI();
+        netSalary = netSalary.subtract(totalNI);
+
+    }
+
+    public void setParkingChargeAmount(BigDecimal monthlyParkingCharge) {
+        this.monthlyParking = monthlyParkingCharge;
+        if (parkingCharge) {
+            applyParkingCharge();
+        }
     }
 
     private BigDecimal calculateTax() {
@@ -40,12 +51,12 @@ public class Salary {
         BigDecimal previousBracket = new BigDecimal("0");
         for (Map.Entry<BigDecimal, BigDecimal> entry : taxRates.entrySet()) {
             if (entry.getKey().compareTo(BigDecimal.ZERO) < 0) {
-                taxTotal = taxTotal.add(yearlySalary.subtract(previousBracket).multiply(entry.getValue()));
-            } else if (yearlySalary.compareTo(entry.getKey()) > 0) {
+                taxTotal = taxTotal.add(grossSalary.subtract(previousBracket).multiply(entry.getValue()));
+            } else if (grossSalary.compareTo(entry.getKey()) > 0) {
                 taxTotal = taxTotal.add((entry.getKey().subtract(previousBracket)).multiply(entry.getValue()));
 
-            } else if ((yearlySalary.compareTo(previousBracket) > 0) && (yearlySalary.compareTo(entry.getKey()) < 0)) {
-                BigDecimal bracketAmount = yearlySalary.subtract(previousBracket);
+            } else if ((grossSalary.compareTo(previousBracket) > 0) && (grossSalary.compareTo(entry.getKey()) < 0)) {
+                BigDecimal bracketAmount = grossSalary.subtract(previousBracket);
                 taxTotal = taxTotal.add(bracketAmount.multiply(entry.getValue()));
                 break;
             }
@@ -54,40 +65,49 @@ public class Salary {
         return taxTotal;
     }
 
-    public void useParkingCharge() {
+    private BigDecimal calculateNI() {
+        // TODO: CSV gets
+        BigDecimal niLimit = new BigDecimal("9568");
+        BigDecimal niRate = new BigDecimal("0.12");
+        // totalNI = (grossSalary - niLimit) * niRate
+        return (grossSalary.subtract(niLimit)).multiply(niRate);
+    }
+
+    public void applyParkingCharge() {
         parkingCharge = true;
-        netSalary = netSalary.subtract(monthlyParkingCharge.multiply(new BigDecimal("12")));
+        netSalary = netSalary.subtract(monthlyParking.multiply(new BigDecimal("12")));
+    }
+
+    public void applyTeachersPension() {
     }
 
 
-    public void setParkingCharge(BigDecimal monthlyParkingCharge) {
-        this.monthlyParkingCharge = monthlyParkingCharge;
-        if (parkingCharge) {
-            useParkingCharge();
-        }
+
+    public BigDecimal getMonthlyParking() {
+        return monthlyParking;
+    }
+
+    public BigDecimal getMonthlySalary() {
+        return this.grossSalary.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
+    }
+
+    public BigDecimal getTaxableAmount() {
+        return grossSalary.subtract(new BigDecimal("12570"));
+    }
+
+    public BigDecimal getTotalTax() {
+        return totalTax;
+    }
+
+    public BigDecimal getTotalNI() {
+        return totalNI;
+    }
+
+    public BigDecimal getTeachersPension() {
+        return teachersPension;
     }
 
     public BigDecimal getNetSalary() {
         return netSalary;
-    }
-
-    public BigDecimal getMonthlyParkingCharge() {
-        return monthlyParkingCharge;
-    }
-
-    public BigDecimal getMonthlySalary() {
-        return this.yearlySalary.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
-    }
-
-    public BigDecimal getTaxableAmount() {
-        return taxableAmount;
-    }
-
-    public BigDecimal getTax() {
-        return taxAmount;
-    }
-
-    public BigDecimal getTaxAmount() {
-        return taxAmount;
     }
 }

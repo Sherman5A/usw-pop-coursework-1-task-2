@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
-import java.util.stream.StreamSupport;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserInterfaceTest {
 
