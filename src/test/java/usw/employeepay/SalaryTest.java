@@ -14,7 +14,7 @@ class SalaryTest {
     Salary testSalaryLarge = new Salary(new BigDecimal("140000"));
 
     @Test
-    @DisplayName("Monthly salary calculations")
+    @DisplayName("Calculate monthly salary")
     public void monthlySalaryCalculations() {
 
         BigDecimal expectedMonthlySalary2 = new BigDecimal("3750");
@@ -26,14 +26,14 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Taxable amount")
-    public void taxableAmount() {
+    @DisplayName("Calculate taxable amount")
+    public void getTaxableAmount() {
         BigDecimal expectedTaxableAmount = new BigDecimal("32430.00");
         assertEquals(0, expectedTaxableAmount.compareTo(testSalary.getTaxableAmount()));
     }
 
     @Test
-    @DisplayName("Calculate Tax")
+    @DisplayName("Calculate tax")
     public void calculateTax() {
         BigDecimal expectedTax = new BigDecimal("6486");
         assertEquals(0, expectedTax.compareTo(testSalary.getTotalTax()));
@@ -50,7 +50,7 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Parking charge works well")
+    @DisplayName("Parking charge applies")
     void useParkingCharge() {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         BigDecimal monthlyParking = new BigDecimal("10.00");
@@ -61,12 +61,38 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Set parking charge works")
+    @DisplayName("Set parking charge")
     void setParkingCharge() {
         BigDecimal monthlyParking = new BigDecimal("30.00");
-        BigDecimal expectedNetSalary = new BigDecimal("38154.00");
+        BigDecimal expectedNetSalary = new BigDecimal("33902.16");
 
         testSalary.setParkingChargeAmount(monthlyParking);
         assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParking()));
+
+        testSalary.applyParkingCharge();
+        assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
+    }
+
+    @Test
+    @DisplayName("Total teachers pension")
+    void getTotalTeachersPension() {
+        BigDecimal expectedTeachersPension = new BigDecimal("3501.76");
+        testSalary.applyTeachersPension();
+        assertEquals(0, expectedTeachersPension.compareTo(testSalary.getTotalTeachersPension()));
+    }
+
+    @Test
+    @DisplayName("Total deductions")
+    void getTotalDeductions() {
+        BigDecimal expectedDeductions = new BigDecimal("10737.84");
+        assertEquals(0, expectedDeductions.compareTo(testSalary.getTotalDeductions()));
+    }
+
+    @Test
+    @DisplayName("Net salary")
+    void getNetSalary() {
+        BigDecimal expectedNetSalary = new BigDecimal("34142.16");
+        testSalary.applyParkingCharge();
+        assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
     }
 }
