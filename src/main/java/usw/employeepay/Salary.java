@@ -10,27 +10,48 @@ public class Salary {
     // BigDecimal used as we are working with money
     // Avoids errors concerning floating-point representation
     private BigDecimal grossSalary;
-    private BigDecimal totalTax;
+    private BigDecimal incomeTax;
     private BigDecimal totalNI;
-    private BigDecimal totalDeductions;
+    private BigDecimal totalDeductions = new BigDecimal("0");
     private BigDecimal teachersPension;
     private BigDecimal netSalary;
     private boolean parkingCharge = false;
     private BigDecimal monthlyParking = new BigDecimal("10.00");
+    iRateIO rateIO;
 
-    public Salary(BigDecimal grossSalary) {
-        setSalary(grossSalary);
+
+    public Salary(BigDecimal grossSalary, iRateIO rateIO) {
+        this.grossSalary = grossSalary;
+        netSalary = grossSalary;
+        this.rateIO = rateIO;
     }
 
-    public void setSalary(BigDecimal yearlySalary) {
-        this.grossSalary = yearlySalary;
-        netSalary = yearlySalary;
-        totalTax = calculateTax();
-        netSalary = netSalary.subtract(totalTax);
-        totalNI = calculateNI();
-        totalDeductions = totalTax.add(totalNI);
-        netSalary = netSalary.subtract(totalNI);
+    public void setSalary(BigDecimal grossSalary) {
+        this.grossSalary = grossSalary;
+        netSalary = grossSalary;
+        applyAllDeductions();
+    }
 
+    public void setRateIO(iRateIO rateIO) {
+        this.rateIO = rateIO;
+        applyAllDeductions();
+    }
+
+    public void applyAllDeductions() {
+        applyIncomeTax();
+        applyNationalInsurance();
+    }
+
+    public void applyIncomeTax() {
+        incomeTax = applyPaymentBands(grossSalary, rateIO.getTaxBands());
+        totalDeductions = totalDeductions.add(incomeTax);
+        netSalary = netSalary.subtract(incomeTax);
+    }
+
+    public void applyNationalInsurance() {
+        totalNI = applyPaymentBands(grossSalary, rateIO.getNationalInsurance());
+        totalDeductions = totalDeductions.add(totalNI);
+        netSalary = netSalary.subtract(totalNI);
     }
 
     public void setParkingChargeAmount(BigDecimal monthlyParkingCharge) {
@@ -38,15 +59,6 @@ public class Salary {
         if (parkingCharge) {
             applyParkingCharge();
         }
-    }
-
-    private BigDecimal calculateTax() {
-        LinkedHashMap<BigDecimal, BigDecimal> taxBands = new LinkedHashMap<>();
-        taxBands.put(new BigDecimal("12570"), new BigDecimal("0.00"));
-        taxBands.put(new BigDecimal("50270"), new BigDecimal("0.20"));
-        taxBands.put(new BigDecimal("125140"), new BigDecimal("0.40"));
-        taxBands.put(new BigDecimal("-1"), new BigDecimal("0.45"));
-        return applyPaymentBands(grossSalary, taxBands);
     }
 
     private BigDecimal applyPaymentBands(BigDecimal income, LinkedHashMap<BigDecimal, BigDecimal> paymentBands) {
@@ -63,7 +75,8 @@ public class Salary {
 
             } else if ((income.compareTo(previousBracket) > 0) && (income.compareTo(entry.getKey()) < 0)) {
                 BigDecimal bracketAmount = income.subtract(previousBracket);
-                totalPayment = totalPayment.add(bracketAmount.multiply(entry.getValue()).setScale(2, RoundingMode.HALF_UP));
+                totalPayment = totalPayment.add(bracketAmount.multiply(entry.getValue()).setScale(2,
+                        RoundingMode.HALF_UP));
                 break;
             }
             previousBracket = entry.getKey();
@@ -71,23 +84,13 @@ public class Salary {
         return totalPayment;
     }
 
-    private BigDecimal calculateNI() {
+    private BigDecimal calculateNI(LinkedHashMap<BigDecimal, BigDecimal> niBands) {
         // TODO: CSV gets
-        BigDecimal niLimit = new BigDecimal("9568");
-        BigDecimal niRate = new BigDecimal("0.12");
-        // totalNI = (grossSalary - niLimit) * niRate
-        return (grossSalary.subtract(niLimit)).multiply(niRate);
+        return applyPaymentBands(grossSalary, niBands);
     }
 
     private BigDecimal calculatePension() {
-        LinkedHashMap<BigDecimal, BigDecimal> pensionBands = new LinkedHashMap<>();
-        pensionBands.put(new BigDecimal("32135.99"), new BigDecimal("0.074"));
-        pensionBands.put(new BigDecimal("43259.99"), new BigDecimal("0.086"));
-        pensionBands.put(new BigDecimal("51292.99"), new BigDecimal("0.096"));
-        pensionBands.put(new BigDecimal("67980.99"), new BigDecimal("0.102"));
-        pensionBands.put(new BigDecimal("92597.99"), new BigDecimal("0.113"));
-        pensionBands.put(new BigDecimal("-1"), new BigDecimal("0.117"));
-        return applyPaymentBands(grossSalary, pensionBands);
+        return applyPaymentBands(grossSalary, rateIO.getPensionBands());
     }
 
     public void applyParkingCharge() {
@@ -99,10 +102,6 @@ public class Salary {
         teachersPension = calculatePension();
     }
 
-    public BigDecimal getMonthlyParking() {
-        return monthlyParking;
-    }
-
     public BigDecimal getMonthlySalary() {
         return this.grossSalary.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
     }
@@ -111,8 +110,8 @@ public class Salary {
         return grossSalary.subtract(new BigDecimal("12570"));
     }
 
-    public BigDecimal getTotalTax() {
-        return totalTax;
+    public BigDecimal getIncomeTax() {
+        return incomeTax;
     }
 
     public BigDecimal getTotalNI() {
@@ -122,7 +121,9 @@ public class Salary {
     public BigDecimal getTotalTeachersPension() {
         return teachersPension;
     }
-
+    public BigDecimal getMonthlyParking() {
+        return monthlyParking;
+    }
     public BigDecimal getTotalDeductions() {
         return totalDeductions;
     }

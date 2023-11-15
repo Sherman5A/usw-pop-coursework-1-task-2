@@ -5,16 +5,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        RateIO rateIO;
         try {
-            RateIO rateIO = new RateIO("rates.csv");
+            rateIO = new RateIO("rates.csv");
 
         } catch (IOException e) {
             System.out.println(e);
+            return;
         }
         Scanner scanner = new Scanner(System.in);
         UserInterface userInput = new UserInterface(scanner);
-        userInput.userLoop();
+        Employee employee = userInput.createEmployeeLoop();
+        employee.setEmployeeSalary(userInput.createSalaryLoop(rateIO));
 
     }
 }

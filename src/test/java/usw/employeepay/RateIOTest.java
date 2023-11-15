@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RateIOTest {
     private RateIO rateIO;
 
-
     @BeforeEach
     void setUp() {
         try {
@@ -39,7 +38,8 @@ class RateIOTest {
     @DisplayName("NI tax bands")
     void getNationalInsurance() {
         LinkedHashMap<BigDecimal, BigDecimal> expectedNationalInsurance = new LinkedHashMap<>();
-        expectedNationalInsurance.put(new BigDecimal("9568"), new BigDecimal("0.12"));
+        expectedNationalInsurance.put(new BigDecimal("9568"), new BigDecimal("0.00"));
+        expectedNationalInsurance.put(new BigDecimal("-1"), new BigDecimal("0.12"));
         assertEquals(expectedNationalInsurance, rateIO.getNationalInsurance());
     }
 

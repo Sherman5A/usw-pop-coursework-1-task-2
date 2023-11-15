@@ -19,12 +19,12 @@ class UserInterfaceTest {
         Scanner scanner = new Scanner(System.in);
 
         UserInterface userInput = new UserInterface(scanner);
-        userInput.userLoop();
+        userInput.createEmployeeLoop();
 
     }
-    @Test
-    @DisplayName("Invalid input in name field")
-    void nameInvalidInput() {
-
-    }
+//    @Test
+//    @DisplayName("Invalid input in name field")
+//    void nameInvalidInput() {
+//
+//    }
 }

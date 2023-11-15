@@ -8,5 +8,6 @@ pension,51292.99,0.096
 pension,67980.99,0.102
 pension,92597.99,0.113
 pension,-1,0.117
-nationalInsurance,9568,0.12
+nationalInsurance,9568,0.00
+nationalInsurance,-1,0.12
 parking,10

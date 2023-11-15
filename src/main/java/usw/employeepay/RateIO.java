@@ -8,24 +8,33 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class RateIO {
+public class RateIO implements iRateIO {
     private final LinkedHashMap<BigDecimal, BigDecimal> taxBands = new LinkedHashMap<>();
     private final LinkedHashMap<BigDecimal, BigDecimal> pensionBands = new LinkedHashMap<>();
     private final LinkedHashMap<BigDecimal, BigDecimal> nationalInsurance = new LinkedHashMap<>();
     private BigDecimal monthlyParking;
 
+    /**
+     * Reads a CSV for tax bands, national insurance, and
+     * @param filePath String of file path
+     * @throws IOException If file does not exist / is not found
+     */
     public RateIO(String filePath) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get(filePath));
+        // Each line runs the parseLine function
         lines.forEach(line -> parseLine(Arrays.asList(line.split(","))));
     }
 
+    /**
+     * Handle the separated line and add it to a tax band
+     * @param line Line to parse
+     */
     private void parseLine(List<String> line) {
         switch (line.get(0)) {
             case "tax" -> taxBands.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
             case "pension" -> pensionBands.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
             case "nationalInsurance" -> nationalInsurance.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
             case "parking" -> {
-                System.out.println("Parking");
                 monthlyParking = (new BigDecimal(line.get(1)));
             }
         }

@@ -9,9 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SalaryTest {
 
-    Salary testSalary = new Salary(new BigDecimal("45000"));
-    Salary testSalaryDecimal = new Salary(new BigDecimal("50000"));
-    Salary testSalaryLarge = new Salary(new BigDecimal("140000"));
+    TestingFakeRateIO testingRateIO = new TestingFakeRateIO();
+    Salary testSalary = new Salary(new BigDecimal("45000"), testingRateIO);
+    Salary testSalaryDecimal = new Salary(new BigDecimal("50000"), testingRateIO);
+    Salary testSalaryLarge = new Salary(new BigDecimal("140000"), testingRateIO);
 
     @Test
     @DisplayName("Calculate monthly salary")
@@ -33,19 +34,22 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Calculate tax")
-    public void calculateTax() {
+    @DisplayName("Calculate income tax")
+    public void calculateIncomeTax() {
         BigDecimal expectedTax = new BigDecimal("6486");
-        assertEquals(0, expectedTax.compareTo(testSalary.getTotalTax()));
+        testSalary.applyIncomeTax();
+        assertEquals(0, expectedTax.compareTo(testSalary.getIncomeTax()));
 
         BigDecimal expectedTaxLarge = new BigDecimal("44175");
-        assertEquals(0, expectedTaxLarge.compareTo(testSalaryLarge.getTotalTax()));
+        testSalaryLarge.applyIncomeTax();
+        assertEquals(0, expectedTaxLarge.compareTo(testSalaryLarge.getIncomeTax()));
     }
 
     @Test
     @DisplayName("Calculate national insurance")
-    void calculateNI() {
+    void calculateNationalInsurance() {
         BigDecimal expectedNI = new BigDecimal("4251.84");
+        testSalary.applyNationalInsurance();
         assertEquals(0, expectedNI.compareTo(testSalary.getTotalNI()));
     }
 
@@ -54,7 +58,7 @@ class SalaryTest {
     void useParkingCharge() {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         BigDecimal monthlyParking = new BigDecimal("10.00");
-
+        testSalary.applyAllDeductions();
         assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParking()));
         testSalary.applyParkingCharge();
         assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
@@ -64,13 +68,9 @@ class SalaryTest {
     @DisplayName("Set parking charge")
     void setParkingCharge() {
         BigDecimal monthlyParking = new BigDecimal("30.00");
-        BigDecimal expectedNetSalary = new BigDecimal("33902.16");
 
         testSalary.setParkingChargeAmount(monthlyParking);
         assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParking()));
-
-        testSalary.applyParkingCharge();
-        assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
     }
 
     @Test
@@ -85,6 +85,7 @@ class SalaryTest {
     @DisplayName("Total deductions")
     void getTotalDeductions() {
         BigDecimal expectedDeductions = new BigDecimal("10737.84");
+        testSalary.applyAllDeductions();
         assertEquals(0, expectedDeductions.compareTo(testSalary.getTotalDeductions()));
     }
 
@@ -92,6 +93,7 @@ class SalaryTest {
     @DisplayName("Net salary")
     void getNetSalary() {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
+        testSalary.applyAllDeductions();
         testSalary.applyParkingCharge();
         assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
     }

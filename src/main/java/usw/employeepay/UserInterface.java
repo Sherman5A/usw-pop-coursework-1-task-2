@@ -9,15 +9,27 @@ public class UserInterface {
 
     private final Scanner scanner;
 
+
+    /**
+     * Class that handles outputting and accepting user input
+     *
+     * @param scanner Input handling
+     */
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public void userLoop() {
+
+    /**
+     * UI loop constructs an Employee class and returns it
+     * Uses validation
+     *
+     * @return Constructed Employee object
+     */
+    public Employee createEmployeeLoop() {
 
         String employeeName;
         int employeeNumber;
-        BigDecimal yearSalary;
 
         System.out.println("Welcome to USW Employee Salary Calculator");
         System.out.println("-----------------------------------------");
@@ -42,6 +54,20 @@ public class UserInterface {
             }
         }
 
+        return new Employee(employeeName, employeeNumber);
+    }
+
+
+    /**
+     * UI loop that constructs Salary that is filled with tax information
+     *
+     * @param rateIO The tax bands to use in initial instantiation of taxes, pension, etc.
+     * @return Constructed Salary object
+     */
+    public Salary createSalaryLoop(RateIO rateIO) {
+
+        BigDecimal yearSalary;
+
         while (true) {
             System.out.print("Yearly salary: ");
             try {
@@ -54,7 +80,6 @@ public class UserInterface {
                 System.out.println("Letter are not allowed employee number");
             }
         }
-
-        Employee employee = new Employee(employeeName, employeeNumber, new Salary(yearSalary));
+        return new Salary(yearSalary, rateIO);
     }
 }
