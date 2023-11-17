@@ -20,8 +20,6 @@ public class Salary {
     private BigDecimal totalNI;
     private BigDecimal totalPension;
     private BigDecimal totalParking;
-    private final boolean parkingCharge = false;
-
 
     public Salary(BigDecimal grossSalary, iRateIO rateIO) {
         this.grossSalary = grossSalary;
@@ -50,22 +48,46 @@ public class Salary {
         netSalary = netSalary.subtract(totalNI);
     }
 
+
+    /**
+     * Applies payment bands to income dynamically
+     * @param income Accepts BigDecimals, no negatives
+     * @param paymentBands LinkedHashMap containing, the taxBand first, then the taxRate, overflow tax rates should
+     *                     be denoted wih a negative number on the band
+     * @return Total payment on income after paymentBands applied
+     */
     private BigDecimal applyPaymentBands(BigDecimal income, LinkedHashMap<BigDecimal, BigDecimal> paymentBands) {
         BigDecimal totalPayment = new BigDecimal("0");
         BigDecimal previousBracket = new BigDecimal("0");
         for (Map.Entry<BigDecimal, BigDecimal> entry : paymentBands.entrySet()) {
+
+            /*
+             If the payment is in a band denoted with a negative number then it is overflow, and applies
+             that rate to rest of salary
+            */
             if (entry.getKey().compareTo(BigDecimal.ZERO) < 0) {
+                // totalPayment = totalPayment + (income - previousBand) * taxRate
                 totalPayment =
                         totalPayment.add(income.subtract(previousBracket).multiply(entry.getValue()).setScale(2,
                                 RoundingMode.HALF_UP));
             } else if (income.compareTo(entry.getKey()) > 0) {
+                /* If the income is greater than the current payment band */
+
+                /* totalPayment = totalPayment + (currentBracket - previousBand) * taxRate */
                 totalPayment =
                         totalPayment.add((entry.getKey().subtract(previousBracket)).multiply(entry.getValue()).setScale(2, RoundingMode.HALF_UP));
 
             } else if ((income.compareTo(previousBracket) > 0) && (income.compareTo(entry.getKey()) < 0)) {
+                /* If the income is smaller than the current payment band */
+
+                /* Get the leftover money in the band */
                 BigDecimal bracketAmount = income.subtract(previousBracket);
+                /* apply tax to the leftover amount in the band
+                   totalPayment = totalPayment + (leftoverAmount * taxRate)
+                 */
                 totalPayment = totalPayment.add(bracketAmount.multiply(entry.getValue()).setScale(2,
                         RoundingMode.HALF_UP));
+                /* Since income is smaller than current band, won't make it to next band, break out of loop */
                 break;
             }
             previousBracket = entry.getKey();

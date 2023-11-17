@@ -30,6 +30,7 @@ public class RateIO implements iRateIO {
      * @param line Line to parse
      */
     private void parseLine(List<String> line) {
+        /* Each type of deduction possible in CSV */
         switch (line.get(0)) {
             case "tax" -> taxBands.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
             case "pension" -> pensionBands.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
