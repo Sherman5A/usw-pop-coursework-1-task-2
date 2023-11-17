@@ -65,15 +65,6 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Set parking charge")
-    void setParkingCharge() {
-        BigDecimal monthlyParking = new BigDecimal("30.00");
-
-        testSalary.setParkingChargeAmount(monthlyParking);
-        assertEquals(0, monthlyParking.compareTo(testSalary.getMonthlyParking()));
-    }
-
-    @Test
     @DisplayName("Total teachers pension")
     void getTotalTeachersPension() {
         BigDecimal expectedTeachersPension = new BigDecimal("3501.76");

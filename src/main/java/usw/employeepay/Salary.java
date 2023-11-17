@@ -54,13 +54,6 @@ public class Salary {
         netSalary = netSalary.subtract(totalNI);
     }
 
-    public void setParkingChargeAmount(BigDecimal monthlyParkingCharge) {
-        this.monthlyParking = monthlyParkingCharge;
-        if (parkingCharge) {
-            applyParkingCharge();
-        }
-    }
-
     private BigDecimal applyPaymentBands(BigDecimal income, LinkedHashMap<BigDecimal, BigDecimal> paymentBands) {
         BigDecimal totalPayment = new BigDecimal("0");
         BigDecimal previousBracket = new BigDecimal("0");
