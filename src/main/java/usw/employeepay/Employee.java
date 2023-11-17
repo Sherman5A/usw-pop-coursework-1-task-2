@@ -24,7 +24,7 @@ public class Employee {
         return employeeNum;
     }
 
-    public Salary getEmployeeSalary() {
+    public Salary getSalary() {
         return employeeSalary;
     }
 

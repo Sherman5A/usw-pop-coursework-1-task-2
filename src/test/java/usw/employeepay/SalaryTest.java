@@ -59,7 +59,7 @@ class SalaryTest {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         BigDecimal monthlyParking = new BigDecimal("10.00");
         testSalary.applyMandatoryDeductions();
-        assertEquals(0, monthlyParking.compareTo(testSalary.getParkingAmount()));
+        assertEquals(0, monthlyParking.compareTo(testSalary.getTotalParking()));
         testSalary.applyParkingCharge();
         assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
     }
@@ -68,7 +68,7 @@ class SalaryTest {
     @DisplayName("Total teachers pension")
     void getTotalTeachersPension() {
         BigDecimal expectedTeachersPension = new BigDecimal("3501.76");
-        testSalary.applyTeachersPension();
+        testSalary.applyPension();
         assertEquals(0, expectedTeachersPension.compareTo(testSalary.getPensionAmount()));
     }
 

@@ -35,9 +35,7 @@ public class RateIO implements iRateIO {
             case "tax" -> taxBands.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
             case "pension" -> pensionBands.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
             case "nationalInsurance" -> nationalInsurance.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
-            case "parking" -> {
-                monthlyParking = (new BigDecimal(line.get(1)));
-            }
+            case "parking" -> monthlyParking = (new BigDecimal(line.get(1)));
         }
     }
 

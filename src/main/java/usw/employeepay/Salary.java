@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class Salary {
 
-    private final BigDecimal monthlyParking = new BigDecimal("10.00");
     iRateIO rateIO;
+
     /**
      * BigDecimal used as we are working with money
      * Avoids errors concerning floating-point representation
@@ -29,7 +29,7 @@ public class Salary {
 
 
     /**
-     * Applies required deductions, income tax and national insurance
+     * Applies required deductions: income tax, national insurance
      */
     public void applyMandatoryDeductions() {
         applyIncomeTax();
@@ -100,16 +100,19 @@ public class Salary {
     }
 
     public void applyParkingCharge() {
-        System.out.println(rateIO.getMonthlyParking());
         totalParking = rateIO.getMonthlyParking().multiply(new BigDecimal("12"));
         totalDeductions = totalDeductions.add(totalParking);
         netSalary = netSalary.subtract(totalParking);
     }
 
-    public void applyTeachersPension() {
+    public void applyPension() {
         totalPension = calculatePension();
-        totalDeductions = totalDeductions.subtract(totalPension);
+        totalDeductions = totalDeductions.add(totalPension);
         netSalary = netSalary.subtract(totalPension);
+    }
+
+    public static BigDecimal convertMonthly(BigDecimal amount) {
+        return amount.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
     }
 
     // Setters
@@ -127,8 +130,11 @@ public class Salary {
 
     // Getters
 
+    public BigDecimal getGrossSalary() {
+        return grossSalary;
+    }
     public BigDecimal getMonthlySalary() {
-        return grossSalary.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
+        return convertMonthly(grossSalary);
     }
 
     public BigDecimal getTaxableAmount() {
@@ -147,8 +153,8 @@ public class Salary {
         return totalPension;
     }
 
-    public BigDecimal getParkingAmount() {
-        return monthlyParking;
+    public BigDecimal getTotalParking() {
+        return totalParking;
     }
 
     public BigDecimal getTotalDeductions() {
