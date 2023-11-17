@@ -9,7 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SalaryTest {
 
+    /* Use the fake rateIO, changing CSV won't mess up unit tests */
     TestingFakeRateIO testingRateIO = new TestingFakeRateIO();
+
+    /* Various salaries to test different tax bands */
     Salary testSalary = new Salary(new BigDecimal("45000"), testingRateIO);
     Salary testSalaryDecimal = new Salary(new BigDecimal("50000"), testingRateIO);
     Salary testSalaryLarge = new Salary(new BigDecimal("140000"), testingRateIO);

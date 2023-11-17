@@ -150,7 +150,7 @@ public class UserInterface {
 
         while (true) {
             System.out.println("Do you want to apply a parking charge? (y/n)");
-            // Normalise to lowercase
+            // Normalise characters to lowercase
             String parkingInput = scanner.nextLine().toLowerCase();
             switch (parkingInput) {
                 case "y": {
@@ -171,6 +171,7 @@ public class UserInterface {
     public boolean userApplyPension() {
         while (true) {
             System.out.println("Do you want to apply a teachers pension? (y/n)");
+            // Normalise characters to lowercase
             String parkingInput = scanner.nextLine().toLowerCase();
             switch (parkingInput) {
                 case "y": {

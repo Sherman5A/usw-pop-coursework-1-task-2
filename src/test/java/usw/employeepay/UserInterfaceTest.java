@@ -20,6 +20,5 @@ class UserInterfaceTest {
 
         UserInterface userInput = new UserInterface(scanner);
         userInput.createEmployeeLoop();
-
     }
 }

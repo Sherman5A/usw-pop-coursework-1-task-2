@@ -20,9 +20,10 @@ public class Main {
         Employee employee = userInput.createEmployeeLoop();
         employee.setEmployeeSalary(userInput.getSalaryLoop(rateIO));
 
-        // Apply income tax and national insurance
+        /* Apply income tax and national insurance */
         employee.getSalary().applyMandatoryDeductions();
 
+        /* Check if user wants to apply optional deductions */
         if (userInput.userApplyParking()) {
             employee.getSalary().applyParkingCharge();
         }

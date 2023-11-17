@@ -17,6 +17,8 @@ public class TestingFakeRateIO implements iRateIO {
 
 
     public TestingFakeRateIO() {
+        /* Create all the fake bands */
+
         taxBands.put(new BigDecimal("12570"), new BigDecimal("0.00"));
         taxBands.put(new BigDecimal("50270"), new BigDecimal("0.20"));
         taxBands.put(new BigDecimal("125140"), new BigDecimal("0.40"));

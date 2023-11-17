@@ -10,6 +10,9 @@ import java.util.LinkedHashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test that RateIO reads the CSV file information correctly
+ */
 class RateIOTest {
     private RateIO rateIO;
 

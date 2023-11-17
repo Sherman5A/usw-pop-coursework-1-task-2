@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * Class that contains information and methods related to Salary.
- * Includes: income tax, national insurance, pensions, and parking charges
+ * Includes: income tax, national insurance, pensions, and parking chargesd
  */
 public class Salary {
 
@@ -93,7 +93,9 @@ public class Salary {
             } else if (income.compareTo(entry.getKey()) > 0) {
                 /* If the income is greater than the current payment band */
 
-                /* totalPayment = totalPayment + (currentBracket - previousBand) * taxRate */
+                /* totalPayment = totalPayment + (currentBracket - previousBand) * taxRate
+                 * It then rounds to 2 decimal places
+                 */
                 totalPayment =
                         totalPayment.add((entry.getKey().subtract(previousBracket)).multiply(entry.getValue()).setScale(2, RoundingMode.HALF_UP));
 
