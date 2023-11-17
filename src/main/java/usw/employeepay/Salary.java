@@ -7,17 +7,20 @@ import java.util.Map;
 
 public class Salary {
 
-    // BigDecimal used as we are working with money
-    // Avoids errors concerning floating-point representation
-    private BigDecimal grossSalary;
-    private BigDecimal incomeTax;
-    private BigDecimal totalNI;
-    private BigDecimal totalDeductions = new BigDecimal("0");
-    private BigDecimal teachersPension;
-    private BigDecimal netSalary;
-    private boolean parkingCharge = false;
-    private BigDecimal monthlyParking = new BigDecimal("10.00");
+    private final BigDecimal monthlyParking = new BigDecimal("10.00");
     iRateIO rateIO;
+    /**
+     * BigDecimal used as we are working with money
+     * Avoids errors concerning floating-point representation
+     */
+    private BigDecimal grossSalary;
+    private BigDecimal netSalary;
+    private BigDecimal totalDeductions = new BigDecimal("0");
+    private BigDecimal totalIncomeTax;
+    private BigDecimal totalNI;
+    private BigDecimal totalPension;
+    private BigDecimal totalParking;
+    private final boolean parkingCharge = false;
 
 
     public Salary(BigDecimal grossSalary, iRateIO rateIO) {
@@ -26,26 +29,19 @@ public class Salary {
         this.rateIO = rateIO;
     }
 
-    public void setSalary(BigDecimal grossSalary) {
-        this.grossSalary = grossSalary;
-        netSalary = grossSalary;
-        applyAllDeductions();
-    }
 
-    public void setRateIO(iRateIO rateIO) {
-        this.rateIO = rateIO;
-        applyAllDeductions();
-    }
-
-    public void applyAllDeductions() {
+    /**
+     * Applies required deductions, income tax and national insurance
+     */
+    public void applyMandatoryDeductions() {
         applyIncomeTax();
         applyNationalInsurance();
     }
 
     public void applyIncomeTax() {
-        incomeTax = applyPaymentBands(grossSalary, rateIO.getTaxBands());
-        totalDeductions = totalDeductions.add(incomeTax);
-        netSalary = netSalary.subtract(incomeTax);
+        totalIncomeTax = applyPaymentBands(grossSalary, rateIO.getTaxBands());
+        totalDeductions = totalDeductions.add(totalIncomeTax);
+        netSalary = netSalary.subtract(totalIncomeTax);
     }
 
     public void applyNationalInsurance() {
@@ -77,52 +73,72 @@ public class Salary {
         return totalPayment;
     }
 
-    private BigDecimal calculateNI(LinkedHashMap<BigDecimal, BigDecimal> niBands) {
-        // TODO: CSV gets
-        return applyPaymentBands(grossSalary, niBands);
-    }
-
     private BigDecimal calculatePension() {
         return applyPaymentBands(grossSalary, rateIO.getPensionBands());
     }
 
     public void applyParkingCharge() {
-        parkingCharge = true;
-        netSalary = netSalary.subtract(monthlyParking.multiply(new BigDecimal("12")));
+        System.out.println(rateIO.getMonthlyParking());
+        totalParking = rateIO.getMonthlyParking().multiply(new BigDecimal("12"));
+        totalDeductions = totalDeductions.add(totalParking);
+        netSalary = netSalary.subtract(totalParking);
     }
 
     public void applyTeachersPension() {
-        teachersPension = calculatePension();
+        totalPension = calculatePension();
+        totalDeductions = totalDeductions.subtract(totalPension);
+        netSalary = netSalary.subtract(totalPension);
     }
 
+    // Setters
+
+    public void setSalary(BigDecimal grossSalary) {
+        this.grossSalary = grossSalary;
+        netSalary = grossSalary;
+        applyMandatoryDeductions();
+    }
+
+    public void setRateIO(iRateIO rateIO) {
+        this.rateIO = rateIO;
+        applyMandatoryDeductions();
+    }
+
+    // Getters
+
     public BigDecimal getMonthlySalary() {
-        return this.grossSalary.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
+        return grossSalary.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
     }
 
     public BigDecimal getTaxableAmount() {
         return grossSalary.subtract(new BigDecimal("12570"));
     }
 
-    public BigDecimal getIncomeTax() {
-        return incomeTax;
+    public BigDecimal getIncomeTaxAmount() {
+        return totalIncomeTax;
     }
 
-    public BigDecimal getTotalNI() {
+    public BigDecimal getNIAmount() {
         return totalNI;
     }
 
-    public BigDecimal getTotalTeachersPension() {
-        return teachersPension;
+    public BigDecimal getPensionAmount() {
+        return totalPension;
     }
-    public BigDecimal getMonthlyParking() {
+
+    public BigDecimal getParkingAmount() {
         return monthlyParking;
     }
+
     public BigDecimal getTotalDeductions() {
         return totalDeductions;
     }
 
     public BigDecimal getNetSalary() {
         return netSalary;
+    }
+
+    public BigDecimal getMonthlyNetSalary() {
+        return netSalary.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
     }
 
 }

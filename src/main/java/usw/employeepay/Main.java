@@ -16,7 +16,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         UserInterface userInput = new UserInterface(scanner);
         Employee employee = userInput.createEmployeeLoop();
-        employee.setEmployeeSalary(userInput.createSalaryLoop(rateIO));
+        employee.setEmployeeSalary(userInput.getSalaryLoop(rateIO));
 
     }
 }

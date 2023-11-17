@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 
 /**
  * Interface for RateIO. Multiple implementations that use file reading,
- * and set values
+ * and mocked set values for testing purposes
  */
 public interface iRateIO {
     LinkedHashMap<BigDecimal, BigDecimal> getTaxBands();

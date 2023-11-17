@@ -64,7 +64,7 @@ public class UserInterface {
      * @param rateIO The tax bands to use in initial instantiation of taxes, pension, etc.
      * @return Constructed Salary object
      */
-    public Salary createSalaryLoop(RateIO rateIO) {
+    public Salary getSalaryLoop(RateIO rateIO) {
 
         BigDecimal yearSalary;
 

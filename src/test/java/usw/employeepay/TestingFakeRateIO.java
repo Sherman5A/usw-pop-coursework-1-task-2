@@ -13,7 +13,7 @@ public class TestingFakeRateIO implements iRateIO {
     private final LinkedHashMap<BigDecimal, BigDecimal> taxBands = new LinkedHashMap<>();
     private final LinkedHashMap<BigDecimal, BigDecimal> nationalInsurance = new LinkedHashMap<>();
     private final LinkedHashMap<BigDecimal, BigDecimal> pensionBands = new LinkedHashMap<>();
-    private BigDecimal monthlyParking;
+    private final BigDecimal monthlyParking = new BigDecimal("10");
 
 
     public TestingFakeRateIO() {
