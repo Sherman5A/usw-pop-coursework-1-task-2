@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * Class that contains information and methods related to Salary.
- * Includes: income tax, national insurance, pensions, and parking chargesd
+ * Includes: income tax, national insurance, pensions, and parking charges
  */
 public class Salary {
 

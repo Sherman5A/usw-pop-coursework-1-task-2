@@ -69,7 +69,8 @@ public class UserInterface {
             System.out.printf("Pension charge: £%s\n", Salary.convertMonthly(employee.getSalary().getPensionAmount()));
         }
 
-        System.out.printf("\nMonthly total deductions: £%s\n", Salary.convertMonthly(employee.getSalary().getTotalDeductions()));
+        System.out.printf("\nMonthly total deductions: £%s\n",
+                Salary.convertMonthly(employee.getSalary().getTotalDeductions()));
         System.out.printf("Monthly net pay: £%s\n", employee.getSalary().getMonthlyNetSalary());
     }
 

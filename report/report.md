@@ -6,9 +6,33 @@ toc-own-page: true
 titlepage: true
 ---
 
-# Program Source Code
+# Part A - Design Task
 
-## `Main.java`
+## Part 1 User Login and Unique Pin
+
+## Part 2 - Employee Pay Calculator
+
+# Part B - Programming Task
+
+## Part 1 User Login and Unique Pin
+
+### Program Source Code
+
+#### `Main.java`
+
+### Program Unit Tests
+
+### Program Outputs
+
+## Part 2 - Employee Pay Calculator
+
+### Design Process
+
+### Program Source Code
+ 
+#### `Main.java`
+
+\mbox{}
 
 ```java
 package usw.employeepay;
@@ -48,7 +72,9 @@ public class Main {
 }
 ```
 
-## `UserInterface.java`
+#### `UserInterface.java`
+
+\mbox{}
 
 ```java
 package usw.employeepay;
@@ -283,7 +309,9 @@ public class UserInterface {
 }
 ```
 
-## `Employee.java`
+#### `Employee.java`
+
+\mbox{}
 
 ```java
 package usw.employeepay;
@@ -328,7 +356,9 @@ public class Employee {
 }
 ```
 
-## `Salary.java`
+#### `Salary.java`
+
+\mbox{}
 
 ```java
 package usw.employeepay;
@@ -536,7 +566,9 @@ public class Salary {
 }
 ```
 
-## `iRateIO.java`
+#### `iRateIO.java`
+
+\mbox{}
 
 ```java
 package usw.employeepay;
@@ -545,8 +577,8 @@ import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 
 /**
- * Interface for RateIO. Multiple implementations that use file reading,
- * and mocked set values for testing purposes
+ * Interface for RateIO. Multiple implementations that use file
+ * reading, and mocked set values for testing purposes
  */
 public interface iRateIO {
     LinkedHashMap<BigDecimal, BigDecimal> getTaxBands();
@@ -560,10 +592,11 @@ public interface iRateIO {
 
 ```
 
-## `RateIO.java`
+#### `RateIO.java`
+
+\mbox{}
 
 ```java
-
 package usw.employeepay;
 
 import java.io.IOException;
@@ -588,7 +621,9 @@ public class RateIO implements iRateIO {
     public RateIO(String filePath) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get(filePath));
         // Each line runs the parseLine function
-        lines.forEach(line -> parseLine(Arrays.asList(line.split(","))));
+        lines.forEach(line -> 
+            parseLine(Arrays.asList(line.split(",")))
+        );
     }
 
     /**
@@ -598,10 +633,21 @@ public class RateIO implements iRateIO {
     private void parseLine(List<String> line) {
         /* Each type of deduction possible in CSV */
         switch (line.get(0)) {
-            case "tax" -> taxBands.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
-            case "pension" -> pensionBands.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
-            case "nationalInsurance" -> nationalInsurance.put(new BigDecimal(line.get(1)), new BigDecimal(line.get(2)));
-            case "parking" -> monthlyParking = (new BigDecimal(line.get(1)));
+            case "tax" -> taxBands.put(
+                new BigDecimal(line.get(1)), 
+                new BigDecimal(line.get(2))
+            );
+            case "pension" -> pensionBands.put(
+                new BigDecimal(line.get(1)), 
+                new BigDecimal(line.get(2))
+            );
+            case "nationalInsurance" -> nationalInsurance.put(
+                new BigDecimal(line.get(1)),
+                new BigDecimal(line.get(2))
+            );
+            case "parking" -> monthlyParking = (
+                new BigDecimal(line.get(1))
+            );
         }
     }
 
@@ -624,9 +670,11 @@ public class RateIO implements iRateIO {
 
 ```
 
-# Program Unit Tests
+### Program Unit Tests
 
-## `SalaryTest.java`
+#### `SalaryTest.java`
+
+\mbox{}
 
 ```java
 package usw.employeepay;
@@ -641,19 +689,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SalaryTest {
 
     TestingFakeRateIO testingRateIO = new TestingFakeRateIO();
-    Salary testSalary = new Salary(new BigDecimal("45000"), testingRateIO);
-    Salary testSalaryDecimal = new Salary(new BigDecimal("50000"), testingRateIO);
-    Salary testSalaryLarge = new Salary(new BigDecimal("140000"), testingRateIO);
+    Salary testSalary = new Salary(
+        new BigDecimal("45000"), testingRateIO
+    );
+    Salary testSalaryDecimal = new Salary(
+        new BigDecimal("50000"), testingRateIO
+    );
+    Salary testSalaryLarge = new Salary(
+        new BigDecimal("140000"), testingRateIO)
+    ;
 
     @Test
     @DisplayName("Calculate monthly salary")
     public void monthlySalaryCalculations() {
-
         BigDecimal expectedMonthlySalary2 = new BigDecimal("3750");
-        assertEquals(0, expectedMonthlySalary2.compareTo(testSalary.getMonthlySalary()));
+
+        assertEquals(0, expectedMonthlySalary2.compareTo(
+            testSalary.getMonthlySalary())
+        );
 
         BigDecimal expectedMonthlySalary1 = new BigDecimal("4166.67");
-        assertEquals(0, expectedMonthlySalary1.compareTo(testSalaryDecimal.getMonthlySalary()));
+
+        assertEquals(0, expectedMonthlySalary1.compareTo(
+            testSalaryDecimal.getMonthlySalary())
+        );
 
     }
 
@@ -661,7 +720,10 @@ class SalaryTest {
     @DisplayName("Calculate taxable amount")
     public void getTaxableAmount() {
         BigDecimal expectedTaxableAmount = new BigDecimal("32430.00");
-        assertEquals(0, expectedTaxableAmount.compareTo(testSalary.getTaxableAmount()));
+
+        assertEquals(0, expectedTaxableAmount.compareTo(
+            testSalary.getTaxableAmount())
+        );
     }
 
     @Test
@@ -669,11 +731,17 @@ class SalaryTest {
     public void calculateIncomeTax() {
         BigDecimal expectedTax = new BigDecimal("6486");
         testSalary.applyIncomeTax();
-        assertEquals(0, expectedTax.compareTo(testSalary.getIncomeTaxAmount()));
+
+        assertEquals(0, expectedTax.compareTo(
+            testSalary.getIncomeTaxAmount())
+        );
 
         BigDecimal expectedTaxLarge = new BigDecimal("44175");
         testSalaryLarge.applyIncomeTax();
-        assertEquals(0, expectedTaxLarge.compareTo(testSalaryLarge.getIncomeTaxAmount()));
+
+        assertEquals(0, expectedTaxLarge.compareTo(
+            testSalaryLarge.getIncomeTaxAmount())
+        );
     }
 
     @Test
@@ -681,7 +749,10 @@ class SalaryTest {
     void calculateNationalInsurance() {
         BigDecimal expectedNI = new BigDecimal("4251.84");
         testSalary.applyNationalInsurance();
-        assertEquals(0, expectedNI.compareTo(testSalary.getNIAmount()));
+
+        assertEquals(0, expectedNI.compareTo(
+            testSalary.getNIAmount())
+        );
     }
 
     @Test
@@ -691,8 +762,13 @@ class SalaryTest {
         BigDecimal monthlyParking = new BigDecimal("120.00");
         testSalary.applyMandatoryDeductions();
         testSalary.applyParkingCharge();
-        assertEquals(0, monthlyParking.compareTo(testSalary.getTotalParking()));
-        assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
+
+        assertEquals(0, monthlyParking.compareTo(
+            testSalary.getTotalParking())
+        );
+        assertEquals(0, expectedNetSalary.compareTo(
+            testSalary.getNetSalary())
+        );
     }
 
     @Test
@@ -700,7 +776,10 @@ class SalaryTest {
     void getTotalTeachersPension() {
         BigDecimal expectedTeachersPension = new BigDecimal("3501.76");
         testSalary.applyPension();
-        assertEquals(0, expectedTeachersPension.compareTo(testSalary.getPensionAmount()));
+
+        assertEquals(0, expectedTeachersPension.compareTo(
+            testSalary.getPensionAmount())
+        );
     }
 
     @Test
@@ -708,7 +787,10 @@ class SalaryTest {
     void getTotalDeductions() {
         BigDecimal expectedDeductions = new BigDecimal("10737.84");
         testSalary.applyMandatoryDeductions();
-        assertEquals(0, expectedDeductions.compareTo(testSalary.getTotalDeductions()));
+
+        assertEquals(0, expectedDeductions.compareTo(
+            testSalary.getTotalDeductions())
+        );
     }
 
     @Test
@@ -717,13 +799,17 @@ class SalaryTest {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         testSalary.applyMandatoryDeductions();
         testSalary.applyParkingCharge();
-        assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
+
+        assertEquals(0, expectedNetSalary.compareTo(
+            testSalary.getNetSalary())
+        );
     }
 }
-
 ```
 
-## `RateIOTest.java`
+#### `RateIOTest.java`
+
+\mbox{}
 
 ```java
 
@@ -756,10 +842,18 @@ class RateIOTest {
     @DisplayName("CSV tax bands")
     void getTaxBands() {
         LinkedHashMap<BigDecimal, BigDecimal> expectedTaxBands = new LinkedHashMap<>();
-        expectedTaxBands.put(new BigDecimal("12570"), new BigDecimal("0.00"));
-        expectedTaxBands.put(new BigDecimal("50270"), new BigDecimal("0.20"));
-        expectedTaxBands.put(new BigDecimal("125140"), new BigDecimal("0.40"));
-        expectedTaxBands.put(new BigDecimal("-1"), new BigDecimal("0.45"));
+        expectedTaxBands.put(
+            new BigDecimal("12570"), new BigDecimal("0.00")
+        );
+        expectedTaxBands.put(
+            new BigDecimal("50270"), new BigDecimal("0.20")
+        );
+        expectedTaxBands.put(
+            new BigDecimal("125140"), new BigDecimal("0.40")
+        );
+        expectedTaxBands.put(
+            new BigDecimal("-1"), new BigDecimal("0.45")
+        );
         assertEquals(expectedTaxBands, rateIO.getTaxBands());
     }
 
@@ -767,8 +861,12 @@ class RateIOTest {
     @DisplayName("NI tax bands")
     void getNationalInsurance() {
         LinkedHashMap<BigDecimal, BigDecimal> expectedNationalInsurance = new LinkedHashMap<>();
-        expectedNationalInsurance.put(new BigDecimal("9568"), new BigDecimal("0.00"));
-        expectedNationalInsurance.put(new BigDecimal("-1"), new BigDecimal("0.12"));
+        expectedNationalInsurance.put(
+            new BigDecimal("9568"), new BigDecimal("0.00")
+        );
+        expectedNationalInsurance.put(
+            new BigDecimal("-1"), new BigDecimal("0.12")
+        );
         assertEquals(expectedNationalInsurance, rateIO.getNationalInsurance());
     }
 
@@ -776,12 +874,25 @@ class RateIOTest {
     @DisplayName("Pension tax bands")
     void getPensionBands() {
         LinkedHashMap<BigDecimal, BigDecimal> expectedPensionBands = new LinkedHashMap<>();
-        expectedPensionBands.put(new BigDecimal("32135.99"), new BigDecimal("0.074"));
-        expectedPensionBands.put(new BigDecimal("43259.99"), new BigDecimal("0.086"));
-        expectedPensionBands.put(new BigDecimal("51292.99"), new BigDecimal("0.096"));
-        expectedPensionBands.put(new BigDecimal("67980.99"), new BigDecimal("0.102"));
-        expectedPensionBands.put(new BigDecimal("92597.99"), new BigDecimal("0.113"));
-        expectedPensionBands.put(new BigDecimal("-1"), new BigDecimal("0.117"));
+
+        expectedPensionBands.put(
+            new BigDecimal("32135.99"), new BigDecimal("0.074")
+        );
+        expectedPensionBands.put(
+            new BigDecimal("43259.99"), new BigDecimal("0.086")
+        );
+        expectedPensionBands.put(
+            new BigDecimal("51292.99"), new BigDecimal("0.096")
+        );
+        expectedPensionBands.put(
+            new BigDecimal("67980.99"), new BigDecimal("0.102")
+        );
+        expectedPensionBands.put(
+            new BigDecimal("92597.99"), new BigDecimal("0.113")
+        );
+        expectedPensionBands.put(
+            new BigDecimal("-1"), new BigDecimal("0.117")
+        );
         assertEquals(expectedPensionBands, rateIO.getPensionBands());
     }
 
@@ -789,13 +900,16 @@ class RateIOTest {
     @DisplayName("CSV parking fee")
     void getMonthlyParking() {
         BigDecimal expectedMonthlyParking = new BigDecimal("10.00");
-        assertEquals(0, expectedMonthlyParking.compareTo(rateIO.getMonthlyParking()));
+        assertEquals(0, expectedMonthlyParking.compareTo(
+            rateIO.getMonthlyParking())
+        );
     }
 }
-
 ```
 
-## `UserInterfaceTest.java`
+#### `UserInterfaceTest.java`
+
+\mbox{}
 
 ```java
 package usw.employeepay;
@@ -813,7 +927,9 @@ class UserInterfaceTest {
     void nameValidInput() {
 
         String dataIn = "Jake Real\n4324324\n423432";
-        ByteArrayInputStream in = new ByteArrayInputStream(dataIn.getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream(
+            dataIn.getBytes()
+        );
         System.setIn(in);
 
         Scanner scanner = new Scanner(System.in);
@@ -822,5 +938,44 @@ class UserInterfaceTest {
         userInput.createEmployeeLoop();
     }
 }
+```
+
+
+
+### Program Outputs
+
+Running Main.java:
 
 ```
+Welcome to USW Employee Salary Calculator
+-----------------------------------------
+Employee Name: jake
+Employee number: 43232
+Yearly salary: 45000
+45000.00
+Do you want to apply a parking charge? (y/n)
+n
+Do you want to apply a teachers pension? (y/n)
+n
+
+Calculating yearly net pay...
+
+Gross salary: £45000.00
+Taxable amount: £32430.00
+Tax paid: £6486.00
+National insurance paid: £4251.84
+
+Total deductions: £10737.84
+Yearly net pay: £34262.16
+
+Calculating monthly net pay...
+
+Gross salary: £3750.00
+Taxable amount: £2702.50
+Tax paid: £540.50
+National insurance paid: £354.32
+
+Monthly total deductions: £894.82
+Monthly net pay: £2855.18
+```
+
