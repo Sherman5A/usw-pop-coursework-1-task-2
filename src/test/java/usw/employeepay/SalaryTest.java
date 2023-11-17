@@ -57,10 +57,10 @@ class SalaryTest {
     @DisplayName("Parking charge applies")
     void useParkingCharge() {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
-        BigDecimal monthlyParking = new BigDecimal("10.00");
+        BigDecimal monthlyParking = new BigDecimal("120.00");
         testSalary.applyMandatoryDeductions();
-        assertEquals(0, monthlyParking.compareTo(testSalary.getTotalParking()));
         testSalary.applyParkingCharge();
+        assertEquals(0, monthlyParking.compareTo(testSalary.getTotalParking()));
         assertEquals(0, expectedNetSalary.compareTo(testSalary.getNetSalary()));
     }
 
