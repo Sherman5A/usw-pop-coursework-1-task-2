@@ -29,6 +29,6 @@ public class Main {
         if (userInput.userApplyPension()) {
             employee.getSalary().applyPension();
         }
-        UserInterface.displayEmployeeInfo(employee);
+        UserInterface.displayEmployeeSalary(employee);
     }
 }

@@ -8,7 +8,8 @@ public class Employee {
 
     /**
      * Creates employee
-     * @param name Employee name
+     *
+     * @param name        Employee name
      * @param employeeNum Employee number
      */
     public Employee(String name, int employeeNum) {
@@ -30,10 +31,10 @@ public class Employee {
 
     /**
      * Adds Salary to Employee
+     *
      * @param employeeSalary Salary object
      */
     public void setEmployeeSalary(Salary employeeSalary) {
         this.employeeSalary = employeeSalary;
     }
-
 }

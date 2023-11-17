@@ -5,6 +5,10 @@ import java.math.RoundingMode;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Class that contains information and methods related to Salary.
+ * Includes: income tax, national insurance, pensions, and parking charges
+ */
 public class Salary {
 
     iRateIO rateIO;
@@ -27,6 +31,9 @@ public class Salary {
         this.rateIO = rateIO;
     }
 
+    public static BigDecimal convertMonthly(BigDecimal amount) {
+        return amount.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
+    }
 
     /**
      * Applies required deductions: income tax, national insurance
@@ -48,10 +55,23 @@ public class Salary {
         netSalary = netSalary.subtract(totalNI);
     }
 
+    public void applyPension() {
+        totalPension = applyPaymentBands(grossSalary, rateIO.getPensionBands());
+        totalDeductions = totalDeductions.add(totalPension);
+        netSalary = netSalary.subtract(totalPension);
+    }
+
+    public void applyParkingCharge() {
+        // Monthly parking * 12
+        totalParking = rateIO.getMonthlyParking().multiply(new BigDecimal("12"));
+        totalDeductions = totalDeductions.add(totalParking);
+        netSalary = netSalary.subtract(totalParking);
+    }
 
     /**
      * Applies payment bands to income dynamically
-     * @param income Accepts BigDecimals, no negatives
+     *
+     * @param income       Accepts BigDecimals, no negatives
      * @param paymentBands LinkedHashMap containing, the taxBand first, then the taxRate, overflow tax rates should
      *                     be denoted wih a negative number on the band
      * @return Total payment on income after paymentBands applied
@@ -95,26 +115,6 @@ public class Salary {
         return totalPayment;
     }
 
-    private BigDecimal calculatePension() {
-        return applyPaymentBands(grossSalary, rateIO.getPensionBands());
-    }
-
-    public void applyParkingCharge() {
-        totalParking = rateIO.getMonthlyParking().multiply(new BigDecimal("12"));
-        totalDeductions = totalDeductions.add(totalParking);
-        netSalary = netSalary.subtract(totalParking);
-    }
-
-    public void applyPension() {
-        totalPension = calculatePension();
-        totalDeductions = totalDeductions.add(totalPension);
-        netSalary = netSalary.subtract(totalPension);
-    }
-
-    public static BigDecimal convertMonthly(BigDecimal amount) {
-        return amount.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
-    }
-
     // Setters
 
     public void setSalary(BigDecimal grossSalary) {
@@ -133,6 +133,7 @@ public class Salary {
     public BigDecimal getGrossSalary() {
         return grossSalary;
     }
+
     public BigDecimal getMonthlySalary() {
         return convertMonthly(grossSalary);
     }
@@ -168,5 +169,4 @@ public class Salary {
     public BigDecimal getMonthlyNetSalary() {
         return netSalary.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
     }
-
 }

@@ -22,9 +22,4 @@ class UserInterfaceTest {
         userInput.createEmployeeLoop();
 
     }
-//    @Test
-//    @DisplayName("Invalid input in name field")
-//    void nameInvalidInput() {
-//
-//    }
 }

@@ -19,7 +19,13 @@ public class UserInterface {
         this.scanner = scanner;
     }
 
-    public static void displayEmployeeInfo(Employee employee) {
+
+    /**
+     * Outputs the information concerning an employee's salary
+     *
+     * @param employee Employee to display salary of
+     */
+    public static void displayEmployeeSalary(Employee employee) {
 
         System.out.println("\nCalculating yearly net pay...\n");
         System.out.printf("""
@@ -39,9 +45,11 @@ public class UserInterface {
             System.out.printf("Pension charge: £%s\n", employee.getSalary().getPensionAmount());
         }
 
-        System.out.println();
+        System.out.printf("\nTotal deductions: £%s\n", employee.getSalary().getTotalDeductions());
+        System.out.printf("Yearly net pay: £%s\n", employee.getSalary().getNetSalary());
 
-        System.out.println("Calculating monthly net pay...\n");
+
+        System.out.println("\nCalculating monthly net pay...\n");
         System.out.printf("""
                 Gross salary: £%s
                 Taxable amount: £%s
@@ -51,6 +59,8 @@ public class UserInterface {
                 Salary.convertMonthly(employee.getSalary().getTaxableAmount()),
                 Salary.convertMonthly(employee.getSalary().getIncomeTaxAmount()),
                 Salary.convertMonthly(employee.getSalary().getNIAmount()));
+
+        /* Non-required deductions */
         if (!(employee.getSalary().getTotalParking() == null)) {
             System.out.printf("Parking charge: £%s\n", Salary.convertMonthly(employee.getSalary().getTotalParking()));
         }
@@ -59,10 +69,7 @@ public class UserInterface {
             System.out.printf("Pension charge: £%s\n", Salary.convertMonthly(employee.getSalary().getPensionAmount()));
         }
 
-        System.out.println();
-
-        System.out.printf("Total deductions: £%s\n", employee.getSalary().getTotalDeductions());
-        System.out.println(employee.getSalary().getNetSalary());
+        System.out.printf("\nMonthly total deductions: £%s\n", Salary.convertMonthly(employee.getSalary().getTotalDeductions()));
         System.out.printf("Monthly net pay: £%s\n", employee.getSalary().getMonthlyNetSalary());
     }
 
@@ -96,6 +103,8 @@ public class UserInterface {
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Letter are not allowed employee number");
+                /* nextLine clears the newline from nextInt() avoiding
+                duplicates of above message */
                 scanner.nextLine();
             }
         }
@@ -126,12 +135,17 @@ public class UserInterface {
                 System.out.println(yearSalary);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Letter are not allowed employee number");
+                System.out.println("Letter are not allowed in the employee number");
             }
         }
         return new Salary(yearSalary, rateIO);
     }
 
+    /**
+     * Asks user if they want to apply a parking charge
+     *
+     * @return To apply parking charge or not
+     */
     public boolean userApplyParking() {
 
         while (true) {
@@ -149,6 +163,11 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Asks the user if they want to apply a teacher's pension
+     *
+     * @return bool indicating to apply pension or not
+     */
     public boolean userApplyPension() {
         while (true) {
             System.out.println("Do you want to apply a teachers pension? (y/n)");
@@ -163,6 +182,4 @@ public class UserInterface {
             }
         }
     }
-
-
 }
