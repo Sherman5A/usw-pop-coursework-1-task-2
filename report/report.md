@@ -464,18 +464,21 @@ public class Salary {
         BigDecimal previousBracket = new BigDecimal("0");
 
         for (Map.Entry<BigDecimal, BigDecimal> entry : paymentBands.entrySet()) {
+            BigDecimal currentBracket = entry.getKey();
+            BigDecimal bracketRate = entry.getValue;
+
 
             /*
              * If the payment is in a band denoted with a negative 
              * number then it is overflow, and applies
              * that rate to rest of salary
              */
-            if (entry.getKey().compareTo(BigDecimal.ZERO) < 0) {
+            if (currentBracket.compareTo(BigDecimal.ZERO) < 0) {
                 /* totalPayment = totalPayment + 
                  * (income - previousBand) * taxRate
                  */
                 totalPayment = totalPayment.add(
-                    income.subtract(previousBracket).multiply(entry.getValue()).setScale(2,RoundingMode.HALF_UP)
+                    income.subtract(previousBracket).multiply(bracketRate).setScale(2,RoundingMode.HALF_UP)
                 );
             } else if (income.compareTo(entry.getKey()) > 0) {
                 /* If the income is greater than the current 

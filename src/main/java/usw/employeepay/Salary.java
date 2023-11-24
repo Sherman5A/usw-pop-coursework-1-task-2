@@ -80,7 +80,7 @@ public class Salary {
         BigDecimal totalPayment = new BigDecimal("0");
         BigDecimal previousBracket = new BigDecimal("0");
         for (Map.Entry<BigDecimal, BigDecimal> entry : paymentBands.entrySet()) {
-            BigDecimal currentBracket    = entry.getKey();
+            BigDecimal currentBracket = entry.getKey();
             BigDecimal bracketRate = entry.getValue();
 
             /*
