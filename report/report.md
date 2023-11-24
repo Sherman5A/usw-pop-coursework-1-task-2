@@ -28,6 +28,14 @@ titlepage: true
 
 ### Design Process
 
+![Flowchart of Main.java](flowcharts/images/main-coursework-2.drawio.png)
+
+![Flowchart of Employee.java](flowcharts/images/employee-coursework-2.drawio.png)
+
+![Flowchart of RateIO.java](flowcharts/images/rateIO-coursework-2.drawio.png)
+
+![Flowchart of UserInterface.java](flowcharts/images/userInterface-coursework-2.drawio.png)
+
 ### Program Source Code
  
 #### `Main.java`
