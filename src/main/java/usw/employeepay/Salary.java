@@ -80,26 +80,28 @@ public class Salary {
         BigDecimal totalPayment = new BigDecimal("0");
         BigDecimal previousBracket = new BigDecimal("0");
         for (Map.Entry<BigDecimal, BigDecimal> entry : paymentBands.entrySet()) {
+            BigDecimal currentBracket    = entry.getKey();
+            BigDecimal bracketRate = entry.getValue();
 
             /*
              If the payment is in a band denoted with a negative number then it is overflow, and applies
              that rate to rest of salary
             */
-            if (entry.getKey().compareTo(BigDecimal.ZERO) < 0) {
+            if (currentBracket.compareTo(BigDecimal.ZERO) < 0) {
                 // totalPayment = totalPayment + (income - previousBand) * taxRate
                 totalPayment =
-                        totalPayment.add(income.subtract(previousBracket).multiply(entry.getValue()).setScale(2,
+                        totalPayment.add(income.subtract(previousBracket).multiply(bracketRate).setScale(2,
                                 RoundingMode.HALF_UP));
-            } else if (income.compareTo(entry.getKey()) > 0) {
+            } else if (income.compareTo(currentBracket) > 0) {
                 /* If the income is greater than the current payment band */
 
                 /* totalPayment = totalPayment + (currentBracket - previousBand) * taxRate
                  * It then rounds to 2 decimal places
                  */
                 totalPayment =
-                        totalPayment.add((entry.getKey().subtract(previousBracket)).multiply(entry.getValue()).setScale(2, RoundingMode.HALF_UP));
+                        totalPayment.add((currentBracket.subtract(previousBracket)).multiply(bracketRate).setScale(2, RoundingMode.HALF_UP));
 
-            } else if ((income.compareTo(previousBracket) > 0) && (income.compareTo(entry.getKey()) < 0)) {
+            } else if ((income.compareTo(previousBracket) > 0) && (income.compareTo(currentBracket) < 0)) {
                 /* If the income is smaller than the current payment band */
 
                 /* Get the leftover money in the band */
@@ -107,12 +109,12 @@ public class Salary {
                 /* apply tax to the leftover amount in the band
                    totalPayment = totalPayment + (leftoverAmount * taxRate)
                  */
-                totalPayment = totalPayment.add(bracketAmount.multiply(entry.getValue()).setScale(2,
+                totalPayment = totalPayment.add(bracketAmount.multiply(bracketRate).setScale(2,
                         RoundingMode.HALF_UP));
                 /* Since income is smaller than current band, won't make it to next band, break out of loop */
                 break;
             }
-            previousBracket = entry.getKey();
+            previousBracket = currentBracket;
         }
         return totalPayment;
     }
