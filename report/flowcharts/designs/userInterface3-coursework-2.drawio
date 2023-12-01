@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2023-12-01T10:36:18.474Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="Vdw3aUXjMlcBBa185jTx" version="22.1.5" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="2183" dy="1202" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-1" target="JA0sudtG3DB8dXSsXIi0-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-1" value="UserInterface.java&lt;br&gt;displayEmployeeSalary" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="160.31" y="45" width="144.37" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-3" target="JA0sudtG3DB8dXSsXIi0-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-3" value="Output:&lt;br&gt;Gross salary: Employee Salary yearlySalary&lt;br&gt;Tax paid: Employee Salary totalIncomeTax&lt;br&gt;National insurance: Employee Salary totalNI" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="20" y="155" width="424.99" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-46" target="JA0sudtG3DB8dXSsXIi0-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-46" value="Output:&lt;br&gt;Optional deductions" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="96.87" y="270" width="271.26" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-48" target="JA0sudtG3DB8dXSsXIi0-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-59" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=14;" vertex="1" connectable="0" parent="JA0sudtG3DB8dXSsXIi0-51">
+          <mxGeometry x="-0.1455" y="-1" relative="1" as="geometry">
+            <mxPoint y="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-48">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="232.5" y="632.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-61" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=14;" vertex="1" connectable="0" parent="JA0sudtG3DB8dXSsXIi0-53">
+          <mxGeometry x="-0.654" y="-1" relative="1" as="geometry">
+            <mxPoint x="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-48" value="Employee used parking" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="153.75" y="390" width="157.5" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-50" target="JA0sudtG3DB8dXSsXIi0-64">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="458" />
+              <mxPoint x="600" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-50" value="Output:&lt;br&gt;Parking charge: Employee salary&lt;br&gt;totalParking" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="370" y="427.5" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-54" target="JA0sudtG3DB8dXSsXIi0-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-63" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;labelBackgroundColor=none;" vertex="1" connectable="0" parent="JA0sudtG3DB8dXSsXIi0-56">
+          <mxGeometry x="0.0297" y="-1" relative="1" as="geometry">
+            <mxPoint x="-7" y="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-65" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-54" target="JA0sudtG3DB8dXSsXIi0-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-54" value="Employee wanted pension" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="153.75" y="570" width="157.5" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-55" target="JA0sudtG3DB8dXSsXIi0-64">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="638" />
+              <mxPoint x="600" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-55" value="Output:&lt;br&gt;Pension charge: Employee salary &lt;br&gt;totalPension" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="370" y="607.5" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-64" target="JA0sudtG3DB8dXSsXIi0-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-64" value="Output:&lt;br&gt;Total deductions: Employee Salary totalDeductions" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="127.5" y="790" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JA0sudtG3DB8dXSsXIi0-68" target="JA0sudtG3DB8dXSsXIi0-72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-68" value="Output:&lt;br&gt;Yearly net pay Employee Salary netSalary" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="96.87" y="900" width="271.25" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JA0sudtG3DB8dXSsXIi0-72" value="Stop" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="182.49" y="1000" width="100" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
