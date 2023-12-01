@@ -32,6 +32,8 @@ titlepage: true
 
 ![Flowchart of Employee.java](flowcharts/images/employee-coursework-2.drawio.png)
 
+![Flowchart of RateIO.java](flowcharts/images/rateIO-coursework-2.drawio.png)
+
 ![Flowchart of Salary.java](flowcharts/images/salary-coursework-2.drawio.png)
 
 ![2nd Flowchart of Salary.java](flowcharts/images/salary2-coursework-2.drawio.png)
@@ -42,7 +44,8 @@ titlepage: true
 
 ![2nd Flowchart of UserInterface.java](flowcharts/images/userInterface2-coursework-2.drawio.png)
 
-![Flowchart of RateIO.java](flowcharts/images/rateIO-coursework-2.drawio.png)
+![3rd Flowchart of UserInterface.java](flowcharts/images/userInterface3-coursework-2.drawio.png)
+
 
 ### Program Source Code
  
@@ -231,6 +234,12 @@ public class UserInterface {
             System.out.print("Employee number: ");
             try {
                 employeeNumber = scanner.nextInt();
+                if (employeeNumber < 0) {
+                    System.out.println(
+                        "Negative numbers not accepted"
+                    );
+                    continue;
+                }
                 break;
             } catch (InputMismatchException e) {
                 System.out.println(
@@ -265,7 +274,14 @@ public class UserInterface {
                  * scanner would pick up the leftover newline
                  */
                 scanner.nextLine();
-                System.out.println(yearSalary);
+
+                // Check if the number is negative
+                if (yearSalary.compareTo(BigDecimal.ZERO) < 0) {
+                    System.out.println(
+                        "Negative salaries are not accepted"
+                    );
+                    continue;
+                }
                 break;
             } catch (NumberFormatException e) {
                 System.out.println(
@@ -474,7 +490,6 @@ public class Salary {
         for (Map.Entry<BigDecimal, BigDecimal> entry : paymentBands.entrySet()) {
             BigDecimal currentBracket = entry.getKey();
             BigDecimal bracketRate = entry.getValue;
-
 
             /*
              * If the payment is in a band denoted with a negative 
@@ -963,7 +978,7 @@ class UserInterfaceTest {
 
 ### Program Outputs
 
-Running Main.java:
+Running `Main.java`:
 
 ```
 Welcome to USW Employee Salary Calculator

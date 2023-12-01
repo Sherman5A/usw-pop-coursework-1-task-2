@@ -101,6 +101,10 @@ public class UserInterface {
             System.out.print("Employee number: ");
             try {
                 employeeNumber = scanner.nextInt();
+                if (employeeNumber < 0) {
+                    System.out.println("Negative numbers not accepted");
+                    continue;
+                }
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Letter are not allowed employee number");
@@ -133,7 +137,13 @@ public class UserInterface {
                 // Otherwise next question would appear twice, as the scanner
                 // would pick up the leftover newline
                 scanner.nextLine();
-                System.out.println(yearSalary);
+
+                // Check if the number is negative
+                if (yearSalary.compareTo(BigDecimal.ZERO) < 0) {
+                    System.out.println("Negative salaries are not accepted");
+                    continue;
+                }
+
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Letter are not allowed in the employee number");
