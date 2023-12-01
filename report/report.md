@@ -32,9 +32,17 @@ titlepage: true
 
 ![Flowchart of Employee.java](flowcharts/images/employee-coursework-2.drawio.png)
 
-![Flowchart of RateIO.java](flowcharts/images/rateIO-coursework-2.drawio.png)
+![Flowchart of Salary.java](flowcharts/images/salary-coursework-2.drawio.png)
+
+![2nd Flowchart of Salary.java](flowcharts/images/salary2-coursework-2.drawio.png)
+
+![3rd Flowchart of Salary.java](flowcharts/images/salary3-coursework-2.drawio.png)
 
 ![Flowchart of UserInterface.java](flowcharts/images/userInterface-coursework-2.drawio.png)
+
+![2nd Flowchart of UserInterface.java](flowcharts/images/userInterface2-coursework-2.drawio.png)
+
+![Flowchart of RateIO.java](flowcharts/images/rateIO-coursework-2.drawio.png)
 
 ### Program Source Code
  
