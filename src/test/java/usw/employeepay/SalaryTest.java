@@ -37,7 +37,7 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Calculate income tax")
+    @DisplayName("Calculate and apply income tax")
     public void calculateIncomeTax() {
         BigDecimal expectedTax = new BigDecimal("6486");
         testSalary.applyIncomeTax();
@@ -49,7 +49,7 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Calculate national insurance")
+    @DisplayName("Calculate and apply national insurance")
     void calculateNationalInsurance() {
         BigDecimal expectedNI = new BigDecimal("4251.84");
         testSalary.applyNationalInsurance();
@@ -57,7 +57,7 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Parking charge applies")
+    @DisplayName("Calculate and apply parking charge")
     void useParkingCharge() {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         BigDecimal monthlyParking = new BigDecimal("120.00");
@@ -68,7 +68,7 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Total teachers pension")
+    @DisplayName("Calculate and apply teachers pension")
     void getTotalTeachersPension() {
         BigDecimal expectedTeachersPension = new BigDecimal("3501.76");
         testSalary.applyPension();
@@ -76,7 +76,7 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Total deductions")
+    @DisplayName("Calculate total deductions")
     void getTotalDeductions() {
         BigDecimal expectedDeductions = new BigDecimal("10737.84");
         testSalary.applyMandatoryDeductions();
@@ -84,7 +84,7 @@ class SalaryTest {
     }
 
     @Test
-    @DisplayName("Net salary")
+    @DisplayName("Calculate net salary")
     void getNetSalary() {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         testSalary.applyMandatoryDeductions();

@@ -1013,3 +1013,79 @@ Monthly total deductions: £894.82
 Monthly net pay: £2855.18
 ```
 
+**Testing input validation:**
+
+Employee number:
+
+```
+Welcome to USW Employee Salary Calculator
+-----------------------------------------
+Employee Name: Jake
+Employee number: -3242
+Negative numbers not accepted
+Employee number:
+```
+
+Salary:
+
+```
+Welcome to USW Employee Salary Calculator
+-----------------------------------------
+Employee Name: Jake
+Employee number: 5000
+Yearly salary: -2
+Negative salaries are not accepted
+Yearly salary:
+```
+
+**Unit Test Outputs:**
+
+```
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running usw.employeepay.RateIOTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in usw.employeepay.RateIOTest
+[INFO] Running usw.employeepay.UserInterfaceTest
+Welcome to USW Employee Salary Calculator
+-----------------------------------------
+Employee Name: Employee number: [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in usw.employeepay.UserInterfaceTest
+[INFO] Running usw.employeepay.SalaryTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in usw.employeepay.SalaryTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.859 s
+[INFO] Finished at: 2023-12-01T11:10:30Z
+[INFO] ------------------------------------------------------------------------
+```
+
+These tests include:
+
+- RateIO 
+    - CSV tax bands
+    - CSV NI bands
+    - CSV pension bands
+    - CSV parking fee
+- Salary
+    - Calculate monthly salary
+    - Calculate and apply parking charge
+    - Calculate taxable amount
+    - Calculate total deductions
+    - Calculate and apply national insurance
+    - Calculate net salary
+    - Calculate and apply income tax
+    - Calculate and apply teachers pension
+- UserInterface
+    - Valid input in name field
+
+All tests used the specification examples as test values. 
+
+Salary tests use a mock implementation of the `iRateIO` interface based on the specificiation to 
+avoid failing tests due to a change in the `RateIO` CSV file.
+

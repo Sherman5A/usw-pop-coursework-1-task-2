@@ -38,7 +38,7 @@ class RateIOTest {
     }
 
     @Test
-    @DisplayName("NI tax bands")
+    @DisplayName("CSV NI bands")
     void getNationalInsurance() {
         LinkedHashMap<BigDecimal, BigDecimal> expectedNationalInsurance = new LinkedHashMap<>();
         expectedNationalInsurance.put(new BigDecimal("9568"), new BigDecimal("0.00"));
@@ -47,7 +47,7 @@ class RateIOTest {
     }
 
     @Test
-    @DisplayName("Pension tax bands")
+    @DisplayName("CSV pension bands")
     void getPensionBands() {
         LinkedHashMap<BigDecimal, BigDecimal> expectedPensionBands = new LinkedHashMap<>();
         expectedPensionBands.put(new BigDecimal("32135.99"), new BigDecimal("0.074"));
