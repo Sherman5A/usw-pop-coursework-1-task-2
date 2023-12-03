@@ -13,7 +13,7 @@ public class Salary {
 
     iRateIO rateIO;
 
-    /**
+    /*
      * BigDecimal used as we are working with money
      * Avoids errors concerning floating-point representation
      */
@@ -84,9 +84,9 @@ public class Salary {
             BigDecimal bracketRate = entry.getValue();
 
             /*
-             If the payment is in a band denoted with a negative number then it is overflow, and applies
-             that rate to rest of salary
-            */
+             * If the payment is in a band denoted with a negative number then it is overflow, and applies
+             * that rate to rest of salary
+             */
             if (currentBracket.compareTo(BigDecimal.ZERO) < 0) {
                 // totalPayment = totalPayment + (income - previousBand) * taxRate
                 totalPayment =
@@ -107,7 +107,7 @@ public class Salary {
                 /* Get the leftover money in the band */
                 BigDecimal bracketAmount = income.subtract(previousBracket);
                 /* apply tax to the leftover amount in the band
-                   totalPayment = totalPayment + (leftoverAmount * taxRate)
+                 * totalPayment = totalPayment + (leftoverAmount * taxRate)
                  */
                 totalPayment = totalPayment.add(bracketAmount.multiply(bracketRate).setScale(2,
                         RoundingMode.HALF_UP));
@@ -119,8 +119,6 @@ public class Salary {
         return totalPayment;
     }
 
-    // Setters
-
     public void setSalary(BigDecimal grossSalary) {
         this.grossSalary = grossSalary;
         netSalary = grossSalary;
@@ -131,8 +129,6 @@ public class Salary {
         this.rateIO = rateIO;
         applyMandatoryDeductions();
     }
-
-    // Getters
 
     public BigDecimal getGrossSalary() {
         return grossSalary;

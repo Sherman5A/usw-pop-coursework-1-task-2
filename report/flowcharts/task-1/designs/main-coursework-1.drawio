@@ -1,0 +1,41 @@
+<mxfile host="app.diagrams.net" modified="2023-12-01T15:33:26.132Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="WLeRW8737lx1fd3KuT1t" version="22.1.5" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1046" dy="671" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="_dDXrvmrKJK-yegpXpzj-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_dDXrvmrKJK-yegpXpzj-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="148.7550000000001" y="122.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_dDXrvmrKJK-yegpXpzj-0" value="main.java&lt;br&gt;Start" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="98.75" y="30" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sEX8RyRIROnFJVHIT70V-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="sEX8RyRIROnFJVHIT70V-0">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="148.76923076923072" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sEX8RyRIROnFJVHIT70V-0" value="Create new input scanner" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="63.25" y="120" width="171" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sEX8RyRIROnFJVHIT70V-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="sEX8RyRIROnFJVHIT70V-3" target="sEX8RyRIROnFJVHIT70V-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sEX8RyRIROnFJVHIT70V-3" value="Set userInput = userInterface using scanner as input" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="63.25" y="220" width="171" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sEX8RyRIROnFJVHIT70V-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="sEX8RyRIROnFJVHIT70V-4" target="sEX8RyRIROnFJVHIT70V-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sEX8RyRIROnFJVHIT70V-4" value="Start userInput.startInput" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="58.129999999999995" y="320" width="181.25" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sEX8RyRIROnFJVHIT70V-8" value="End" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="99" y="410" width="100" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

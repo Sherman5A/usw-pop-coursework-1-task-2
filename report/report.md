@@ -16,36 +16,231 @@ titlepage: true
 
 ## Part 1 User Login and Unique Pin
 
+### Design Process
+
 ### Program Source Code
 
 #### `Main.java`
 
+\mbox{}
+
+```java
+package usw.employeelogin;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        UserInterface userInput = new UserInterface(scanner);
+        userInput.userStart();
+    }
+}
+```
+
+#### `Employee.java`
+
+\mbox{}
+
+```java
+package usw.employeelogin;
+
+public class Employee {
+    private final String name;
+    private final int employeeNum;
+    private final int employeeAge;
+    private final int pinNum;
+
+    /**
+     * Creates an employee
+     *
+     * @param name        Name of employee
+     * @param employeeNum Number employee
+     * @param employeeAge Age of employee
+     */
+    public Employee(String name, int employeeNum, int employeeAge) {
+        this.name = name;
+        this.employeeNum = employeeNum;
+        this.employeeAge = employeeAge;
+        this.pinNum = createPinNum();
+    }
+
+    /**
+     * Internal class that returns code. Used in construction of class
+     *
+     * @return Returns the person's PIN
+     */
+    private int createPinNum() {
+        // Gets the person's PIN
+        // PINs are user's name length multiplied by their age
+        // Modulo prevents pins above 9999
+        String[] firstName = this.name.split(" ");
+        return (firstName[0].length() * employeeAge) % 1000;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPinNum() {
+        return pinNum;
+    }
+
+    public int getEmployeeNum() {
+        return employeeNum;
+    }
+}
+```
+
+#### `UserInterface.java`
+
+\mbox{}
+
+```
+package usw.employeelogin;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class UserInterface {
+
+    private final Scanner scanner;
+
+    public UserInterface(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public void userStart() {
+        System.out.println(
+            "Welcome to USW employee management system
+        ");
+
+        String employeeName;
+        int employeeAge;
+        int employeeNumber;
+
+
+        while (true) {
+            System.out.print("Please enter your full name: ");
+            employeeName = scanner.nextLine();
+            if (!employeeName.isEmpty()) {
+                break;
+            }
+            System.out.println("Empty inputs are not accepted");
+        }
+
+        while (true) {
+            System.out.print("What's your age: ");
+            try {
+                employeeAge = scanner.nextInt();
+                if (employeeAge < 0) {
+                    System.out.println(
+                        "Negative ages not allowed"
+                    );
+                    scanner.nextLine();
+                    continue;
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println(
+                    "Letters not allowed in age"
+                );
+                scanner.nextLine();
+            }
+        }
+
+        while (true) {
+            System.out.print("Please enter your employee number: ");
+            try {
+                employeeNumber = scanner.nextInt();
+                if (employeeNumber < 0) {
+                    System.out.println(
+                        "Negative employee numbers not allowed"
+                    );
+                    scanner.nextLine();
+                    continue;
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println(
+                    "Letters not allowed in employee number"
+                );
+                scanner.nextLine();
+            }
+        }
+
+        Employee newEmployee = new Employee(employeeName,
+            employeeNumber, employeeAge
+        );
+        System.out.printf(
+            "Hi %s. Your employee account %d has been created.
+            Your unique pin number is %04d.",
+            newEmployee.getName(),
+            newEmployee.getEmployeeNum(), 
+            newEmployee.getPinNum()
+        );
+    }
+}
+```
+
 ### Program Unit Tests
 
+#### `EmployeeTest.java`
+
+\mbox{}
+
+```java
+package usw.employeelogin;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class EmployeeTest {
+    Employee testEmployee = new Employee("jim", 330, 20);
+    Employee testEmployeeLong = new Employee("12345", 203, 4321);
+
+    @Test
+    @DisplayName("Pin number generated correctly")
+    public void getPinNum() {
+        assertEquals(60, testEmployee.getPinNum());
+        assertEquals(605, testEmployeeLong.getPinNum());
+    }
+}
+```
 ### Program Outputs
 
 ## Part 2 - Employee Pay Calculator
 
 ### Design Process
 
-![Flowchart of Main.java](flowcharts/images/main-coursework-2.drawio.png)
+![Flowchart of Main.java](flowcharts/task-1/images/main-coursework-2.drawio.png)
 
-![Flowchart of Employee.java](flowcharts/images/employee-coursework-2.drawio.png)
+![Flowchart of Employee.java](flowcharts/task-1/images/employee-coursework-2.drawio.png)
 
-![Flowchart of RateIO.java](flowcharts/images/rateIO-coursework-2.drawio.png)
+![Flowchart of RateIO.java](flowcharts/task-1/images/rateIO-coursework-2.drawio.png)
 
-![Flowchart of Salary.java](flowcharts/images/salary-coursework-2.drawio.png)
+![Flowchart of Salary.java](flowcharts/task-1/images/salary-coursework-2.drawio.png)
 
-![2nd Flowchart of Salary.java](flowcharts/images/salary2-coursework-2.drawio.png)
+![2nd Flowchart of Salary.java](flowcharts/task-1/images/salary2-coursework-2.drawio.png)
 
-![3rd Flowchart of Salary.java](flowcharts/images/salary3-coursework-2.drawio.png)
+![3rd Flowchart of Salary.java](flowcharts/task-1/images/salary3-coursework-2.drawio.png)
 
-![Flowchart of UserInterface.java](flowcharts/images/userInterface-coursework-2.drawio.png)
+![Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface-coursework-2.drawio.png)
 
-![2nd Flowchart of UserInterface.java](flowcharts/images/userInterface2-coursework-2.drawio.png)
+![2nd Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface2-coursework-2.drawio.png)
 
-![3rd Flowchart of UserInterface.java](flowcharts/images/userInterface3-coursework-2.drawio.png)
+![3rd Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface3-coursework-2.drawio.png)
 
+**Design decisions:**
+
+Several important design choices were made prior to starting on the flowcharts and program. The
+following choices were made, salary calculations would be created through a process of test-driven 
+development to ensure that they carried out the correct calculations. This necessitated the use of 
+dependency injection in areas related to input and output as the tests had to be consistent,
+unaffected by changes to user input or files.
 
 ### Program Source Code
  
@@ -409,7 +604,7 @@ public class Salary {
 
     iRateIO rateIO;
 
-    /**
+    /*
      * BigDecimal used as we are working with money
      * Avoids errors concerning floating-point representation
      */
@@ -541,8 +736,6 @@ public class Salary {
         return totalPayment;
     }
 
-    // Setters
-
     public void setSalary(BigDecimal grossSalary) {
         this.grossSalary = grossSalary;
         netSalary = grossSalary;
@@ -553,8 +746,6 @@ public class Salary {
         this.rateIO = rateIO;
         applyMandatoryDeductions();
     }
-
-    // Getters
 
     public BigDecimal getGrossSalary() {
         return grossSalary;
@@ -1057,12 +1248,12 @@ Employee Name: Employee number: [INFO] Tests run: 1, Failures: 0, Errors: 0, Ski
 [INFO] 
 [INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
-[INFO] ------------------------------------------------------------------------
+[INFO] ---------------------------------------------------------------
 [INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
+[INFO] ---------------------------------------------------------------
 [INFO] Total time:  1.859 s
 [INFO] Finished at: 2023-12-01T11:10:30Z
-[INFO] ------------------------------------------------------------------------
+[INFO] ---------------------------------------------------------------
 ```
 
 These tests include:
@@ -1086,6 +1277,6 @@ These tests include:
 
 All tests used the specification examples as test values. 
 
-Salary tests use a mock implementation of the `iRateIO` interface based on the specificiation to 
-avoid failing tests due to a change in the `RateIO` CSV file.
+Salary tests use a mock implementation of the interface `iRateIO` based on the coursework 
+specification to avoid failing tests due to a change in the `RateIO` CSV file.
 
