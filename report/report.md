@@ -10,15 +10,45 @@ titlepage: true
 
 ## Part 1 User Login and Unique Pin
 
+![Flowchart of Main.java](flowcharts/task-1/images/main.drawio.png)
+
+![Flowchart of Employee.java](flowcharts/task-1/images/employee.drawio.png)
+
+![Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface.drawio.png)
+
 ## Part 2 - Employee Pay Calculator
+
+![Flowchart of Main.java](flowcharts/task-2/images/main.drawio.png)
+
+![Flowchart of Employee.java](flowcharts/task-2/images/employee.drawio.png)
+
+![Flowchart of RateIO.java](flowcharts/task-2/images/rateIO.drawio.png)
+
+![Flowchart of Salary.java](flowcharts/task-2/images/salary.drawio.png)
+
+![2nd Flowchart of Salary.java](flowcharts/task-2/images/salary2.drawio.png)
+
+![3rd Flowchart of Salary.java](flowcharts/task-2/images/salary3.drawio.png)
+
+![Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface.drawio.png)
+
+![2nd Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface2.drawio.png)
+
+![3rd Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface3.drawio.png)
+
+**Design decisions:**
+
+Several important design choices were made prior to starting on the flowcharts and program. The
+following choices were made, salary calculations would be created through a process of test-driven 
+development to ensure that they carried out the correct calculations. This necessitated the use of 
+dependency injection in areas related to input and output as the tests had to be consistent,
+unaffected by changes to user input or files.
 
 # Part B - Programming Task
 
 ## Part 1 User Login and Unique Pin
 
-### Design Process
-
-### Program Source Code
+### Source Code
 
 #### `Main.java`
 
@@ -213,34 +243,6 @@ class EmployeeTest {
 ### Program Outputs
 
 ## Part 2 - Employee Pay Calculator
-
-### Design Process
-
-![Flowchart of Main.java](flowcharts/task-1/images/main-coursework-2.drawio.png)
-
-![Flowchart of Employee.java](flowcharts/task-1/images/employee-coursework-2.drawio.png)
-
-![Flowchart of RateIO.java](flowcharts/task-1/images/rateIO-coursework-2.drawio.png)
-
-![Flowchart of Salary.java](flowcharts/task-1/images/salary-coursework-2.drawio.png)
-
-![2nd Flowchart of Salary.java](flowcharts/task-1/images/salary2-coursework-2.drawio.png)
-
-![3rd Flowchart of Salary.java](flowcharts/task-1/images/salary3-coursework-2.drawio.png)
-
-![Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface-coursework-2.drawio.png)
-
-![2nd Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface2-coursework-2.drawio.png)
-
-![3rd Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface3-coursework-2.drawio.png)
-
-**Design decisions:**
-
-Several important design choices were made prior to starting on the flowcharts and program. The
-following choices were made, salary calculations would be created through a process of test-driven 
-development to ensure that they carried out the correct calculations. This necessitated the use of 
-dependency injection in areas related to input and output as the tests had to be consistent,
-unaffected by changes to user input or files.
 
 ### Program Source Code
  
@@ -1164,8 +1166,6 @@ class UserInterfaceTest {
     }
 }
 ```
-
-
 
 ### Program Outputs
 
