@@ -1,9 +1,15 @@
 ---
 title: "IS1S481 Coursework 1"
-author: [Jake Real]
-date: "17/11/2023"
+author: [Jake Real - 23056792]
+date: "08/12/2023"
 toc-own-page: true
 titlepage: true
+titlepage-background: "title-background.pdf"
+bibliography: "references.bib"
+csl: "university-of-south-wales-harvard.csl"
+nocite: |
+    @maven, @oracle
+...
 ---
 
 # Part A - Design Task
@@ -1279,4 +1285,6 @@ All tests used the specification examples as test values.
 
 Salary tests use a mock implementation of the interface `iRateIO` based on the coursework 
 specification to avoid failing tests due to a change in the `RateIO` CSV file.
+
+# References
 
