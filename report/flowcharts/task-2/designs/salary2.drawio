@@ -1,75 +1,75 @@
-<mxfile host="app.diagrams.net" modified="2023-12-01T10:36:12.422Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="NOSn6ipX-zD6F2LNn4Fb" version="22.1.5" type="device">
+<mxfile host="app.diagrams.net" modified="2023-12-08T12:45:49.055Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="FbPP1xHe1ELd7W4Wg_L8" version="22.1.7" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1975" dy="1088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2074" dy="1094" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="148.75" y="140" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-1" value="Salary.java&lt;br&gt;applyIncomeTax" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-1" value="Salary&lt;br&gt;applyIncomeTax" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="98.75" y="30" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-5" target="Bx7wt8Y29IsXY4xVtoJw-70">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-5" target="Bx7wt8Y29IsXY4xVtoJw-70" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-5" value="Salary.java&lt;br&gt;applyNationalInsurance" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-5" value="Salary&lt;br&gt;applyNationalInsurance" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="389.37" y="35" width="150" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-54" target="Bx7wt8Y29IsXY4xVtoJw-61">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-54" target="Bx7wt8Y29IsXY4xVtoJw-61" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-54" value="Set totalIncomeTax to output of ApplyTaxBands with arguments:&lt;div&gt;yearlySalary, incomeTaxBand&lt;br&gt;&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=2;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-54" value="Set totalIncomeTax to output of ApplyTaxBands with arguments:&lt;div&gt;yearlySalary, incomeTaxBand&lt;br&gt;&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=2;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="24.380000000000003" y="220" width="248.75" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-57" target="Bx7wt8Y29IsXY4xVtoJw-54">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-57" target="Bx7wt8Y29IsXY4xVtoJw-54" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-57" value="Set incomeTaxBand = rateIO.incomeTax" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-57" value="Set incomeTaxBand = rateIO.incomeTax" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="48.75" y="130" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-61" target="Bx7wt8Y29IsXY4xVtoJw-63">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-61" target="Bx7wt8Y29IsXY4xVtoJw-63" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-61" value="Set totalDeductions = totalDeductions - totalIncomeTax" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-61" value="Set totalDeductions = totalDeductions - totalIncomeTax" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="12.809999999999999" y="320" width="271.87" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-63" target="Bx7wt8Y29IsXY4xVtoJw-65">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-63" target="Bx7wt8Y29IsXY4xVtoJw-65" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-63" value="Set netSalary = netSalary - totalIncomeTax" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-63" value="Set netSalary = netSalary - totalIncomeTax" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="48.75" y="410" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-65" value="Stop" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-65" value="Stop" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="98.75" y="510" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-68" target="Bx7wt8Y29IsXY4xVtoJw-72">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-68" target="Bx7wt8Y29IsXY4xVtoJw-72" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-68" value="Set totalNI to output of ApplyTaxBands with arguments:&lt;div&gt;yearlySalary, NIBands&lt;br&gt;&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=2;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-68" value="Set totalNI to output of ApplyTaxBands with arguments:&lt;div&gt;yearlySalary, NIBands&lt;br&gt;&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=2;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="340" y="220" width="248.75" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-70" target="Bx7wt8Y29IsXY4xVtoJw-68">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-70" target="Bx7wt8Y29IsXY4xVtoJw-68" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-70" value="Set NIBands&amp;nbsp; = rateIO.nationalInsurance" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-70" value="Set NIBands&amp;nbsp; = rateIO.nationalInsurance" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="364.37" y="130" width="200" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-72" target="Bx7wt8Y29IsXY4xVtoJw-74">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-72" target="Bx7wt8Y29IsXY4xVtoJw-74" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-72" value="Set totalDeductions = totalDeductions - totalNI" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-72" value="Set totalDeductions = totalDeductions - totalNI" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="336.56" y="320" width="255.63" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-74" target="Bx7wt8Y29IsXY4xVtoJw-75">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Bx7wt8Y29IsXY4xVtoJw-74" target="Bx7wt8Y29IsXY4xVtoJw-75" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-74" value="Set netSalary = netSalary - totalNI" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-74" value="Set netSalary = netSalary - totalNI" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="364.37" y="410" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-75" value="Stop" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Bx7wt8Y29IsXY4xVtoJw-75" value="Stop" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="414.37" y="510" width="100" height="60" as="geometry" />
         </mxCell>
       </root>
