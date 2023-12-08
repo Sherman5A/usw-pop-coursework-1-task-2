@@ -10,31 +10,31 @@ titlepage: true
 
 ## Part 1 User Login and Unique Pin
 
-![Flowchart of Main.java](flowcharts/task-1/images/main.drawio.png)
+![Flowchart of Main.java](flowcharts/task-1/images/main.png)
 
-![Flowchart of Employee.java](flowcharts/task-1/images/employee.drawio.png)
+![Flowchart of Employee.java](flowcharts/task-1/images/employee.png)
 
-![Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface.drawio.png)
+![Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface.png)
 
 ## Part 2 - Employee Pay Calculator
 
-![Flowchart of Main.java](flowcharts/task-2/images/main.drawio.png)
+![Flowchart of Main.java](flowcharts/task-2/images/main.png)
 
-![Flowchart of Employee.java](flowcharts/task-2/images/employee.drawio.png)
+![Flowchart of Employee.java](flowcharts/task-2/images/employee.png)
 
-![Flowchart of RateIO.java](flowcharts/task-2/images/rateIO.drawio.png)
+![Flowchart of RateIO.java](flowcharts/task-2/images/rateIO.png)
 
-![Flowchart of Salary.java](flowcharts/task-2/images/salary.drawio.png)
+![Flowchart of Salary.java](flowcharts/task-2/images/salary.png)
 
-![2nd Flowchart of Salary.java](flowcharts/task-2/images/salary2.drawio.png)
+![2nd Flowchart of Salary.java](flowcharts/task-2/images/salary2.png)
 
-![3rd Flowchart of Salary.java](flowcharts/task-2/images/salary3.drawio.png)
+![3rd Flowchart of Salary.java](flowcharts/task-2/images/salary3.png)
 
-![Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface.drawio.png)
+![Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface.png)
 
-![2nd Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface2.drawio.png)
+![2nd Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface2.png)
 
-![3rd Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface3.drawio.png)
+![3rd Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface3.png)
 
 **Design decisions:**
 
