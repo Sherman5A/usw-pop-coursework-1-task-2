@@ -8,7 +8,7 @@ titlepage-background: "title-background.pdf"
 bibliography: "references.bib"
 csl: "university-of-south-wales-harvard.csl"
 nocite: |
-    @maven, @oracle
+    @maven, @oracle, @linkedhash @interfaces @surefire
 ...
 ---
 
@@ -16,31 +16,31 @@ nocite: |
 
 ## Part 1 User Login and Unique Pin
 
-![Flowchart of Main.java](flowcharts/task-1/images/main.png)
+![Flowchart of Main](flowcharts/task-1/images/main.png)
 
-![Flowchart of Employee.java](flowcharts/task-1/images/employee.png)
+![Flowchart of Employee](flowcharts/task-1/images/employee.png)
 
-![Flowchart of UserInterface.java](flowcharts/task-1/images/userInterface.png)
+![Flowchart of UserInterface](flowcharts/task-1/images/userInterface.png)
 
 ## Part 2 - Employee Pay Calculator
 
-![Flowchart of Main.java](flowcharts/task-2/images/main.png)
+![Flowchart of Main](flowcharts/task-2/images/main.png)
 
-![Flowchart of Employee.java](flowcharts/task-2/images/employee.png)
+![Flowchart of Employee](flowcharts/task-2/images/employee.png)
 
-![Flowchart of RateIO.java](flowcharts/task-2/images/rateIO.png)
+![Flowchart of RateIO](flowcharts/task-2/images/rateIO.png)
 
-![Flowchart of Salary.java](flowcharts/task-2/images/salary.png)
+![Flowchart of Salary](flowcharts/task-2/images/salary.png)
 
-![2nd Flowchart of Salary.java](flowcharts/task-2/images/salary2.png)
+![2nd Flowchart of Salary](flowcharts/task-2/images/salary2.png)
 
-![3rd Flowchart of Salary.java](flowcharts/task-2/images/salary3.png)
+![3rd Flowchart of Salary](flowcharts/task-2/images/salary3.png)
 
-![Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface.png)
+![Flowchart of UserInterface](flowcharts/task-2/images/userInterface.png)
 
-![2nd Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface2.png)
+![2nd Flowchart of UserInterface](flowcharts/task-2/images/userInterface2.png)
 
-![3rd Flowchart of UserInterface.java](flowcharts/task-2/images/userInterface3.png)
+![3rd Flowchart of UserInterface](flowcharts/task-2/images/userInterface3.png)
 
 **Design decisions:**
 
@@ -247,6 +247,108 @@ class EmployeeTest {
 }
 ```
 ### Program Outputs
+
+Running `Main.java` with typical inputs,
+
+```
+Welcome to USW employee management system
+Please enter your full name: Jake
+What's your age: 19
+Please enter your employee number: 234212
+Hi Jake. Your employee account 234212 has been created. Your unique pin number is 0076.
+```
+
+Using longer details,
+
+```
+Welcome to USW employee management system
+Please enter your full name: Jefferson Jame
+What's your age: 34
+Please enter your employee number: 43244
+Hi Jefferson Jame. Your employee account 43244 has been created. Your unique pin number is 0306.
+```
+
+**Testing input validation:**
+
+Full name,
+```
+Welcome to USW employee management system
+Please enter your full name: 
+Empty inputs are not accepted
+Please enter your full name:
+```
+
+Age,
+```
+Welcome to USW employee management system
+Please enter your full name: Jake
+What's your age: af
+Letters not allowed in age
+What's your age: 
+```
+
+Employee number,
+```
+Welcome to USW employee management system
+Please enter your full name: Jake
+What's your age: 43
+Please enter your employee number: a
+Letters not allowed in employee number
+Please enter your employee number:
+```
+
+**Unit Test Outputs,**
+
+```
+[INFO] ------------------------------------------------------
+[INFO]  T E S T S
+[INFO] ------------------------------------------------------
+[INFO] Running usw.employeepay.RateIOTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in usw.employeepay.RateIOTest
+[INFO] Running usw.employeepay.UserInterfaceTest
+Welcome to USW Employee Salary Calculator
+-----------------------------------------
+Employee Name: Employee number: [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in usw.employeepay.UserInterfaceTest
+[INFO] Running usw.employeepay.SalaryTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in usw.employeepay.SalaryTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------
+[INFO] Total time:  1.859 s
+[INFO] Finished at: 2023-12-01T11:10:30Z
+[INFO] ------------------------------------------------------
+```
+
+These tests include:
+
+- RateIO 
+    - CSV tax bands
+    - CSV NI bands
+    - CSV pension bands
+    - CSV parking fee
+- Salary
+    - Calculate monthly salary
+    - Calculate and apply parking charge
+    - Calculate taxable amount
+    - Calculate total deductions
+    - Calculate and apply national insurance
+    - Calculate net salary
+    - Calculate and apply income tax
+    - Calculate and apply teachers pension
+- UserInterface
+    - Valid input in name field
+
+All tests used the specification examples as test values. 
+
+Salary tests use a mock implementation of the interface `iRateIO` based on the coursework 
+specification to avoid failing tests due to a change in the `RateIO` CSV file.
+
+
 
 ## Part 2 - Employee Pay Calculator
 
@@ -1175,7 +1277,7 @@ class UserInterfaceTest {
 
 ### Program Outputs
 
-Running `Main.java`:
+Running, `Main.java` with typical inputs,
 
 ```
 Welcome to USW Employee Salary Calculator
@@ -1212,7 +1314,7 @@ Monthly net pay: £2855.18
 
 **Testing input validation:**
 
-Employee number:
+Employee number,
 
 ```
 Welcome to USW Employee Salary Calculator
@@ -1223,7 +1325,7 @@ Negative numbers not accepted
 Employee number:
 ```
 
-Salary:
+Salary,
 
 ```
 Welcome to USW Employee Salary Calculator
@@ -1235,31 +1337,28 @@ Negative salaries are not accepted
 Yearly salary:
 ```
 
-**Unit Test Outputs:**
+**Unit Test Outputs,**
 
 ```
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running usw.employeepay.RateIOTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in usw.employeepay.RateIOTest
-[INFO] Running usw.employeepay.UserInterfaceTest
-Welcome to USW Employee Salary Calculator
------------------------------------------
-Employee Name: Employee number: [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in usw.employeepay.UserInterfaceTest
-[INFO] Running usw.employeepay.SalaryTest
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in usw.employeepay.SalaryTest
+[INFO] Running usw.employeelogin.EmployeeTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s - in usw.employeelogin.EmployeeTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
-[INFO] ---------------------------------------------------------------
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ pop-coursework ---
+[INFO] Building jar: /home/jake/Code/usw/pop-coursework-1/target/pop-coursework-1.0-SNAPSHOT.jar
+[INFO] -------------------------------------------------------
 [INFO] BUILD SUCCESS
-[INFO] ---------------------------------------------------------------
-[INFO] Total time:  1.859 s
-[INFO] Finished at: 2023-12-01T11:10:30Z
-[INFO] ---------------------------------------------------------------
+[INFO] -------------------------------------------------------
+[INFO] Total time:  3.098 s
+[INFO] Finished at: 2023-12-08T17:37:55Z
+[INFO] -------------------------------------------------------
 ```
 
 These tests include:
