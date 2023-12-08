@@ -1,0 +1,191 @@
+<mxfile host="app.diagrams.net" modified="2023-12-08T10:52:08.263Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="zj0dlNJt666e3zfEw2Ow" version="22.1.7" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="3457" dy="1903" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="148.75" y="122.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-18" value="UserInterface&lt;br&gt;userStart" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="98.75" y="30" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-25" value="&lt;div&gt;Has arguments:&lt;/div&gt;&lt;div&gt;name&lt;br&gt;employeeNumber&lt;br&gt;employeeAge&lt;br&gt; &lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="208.75" y="30" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-36" target="_XwHaG1tFQSUWYc1SFXW-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-36" value="Output:&lt;br&gt;Welcome to USW employee&lt;br&gt;management system" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="24.48" y="122.5" width="248.56" height="67.5" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-37" target="_XwHaG1tFQSUWYc1SFXW-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-37" value="Declare: &lt;br&gt;employeeName, employeeAge, employeeNumber" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="47.809999999999995" y="225" width="201.86" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-39" target="_XwHaG1tFQSUWYc1SFXW-68">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="358" y="585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-47" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=14;" vertex="1" connectable="0" parent="_XwHaG1tFQSUWYc1SFXW-46">
+          <mxGeometry x="-0.879" relative="1" as="geometry">
+            <mxPoint x="-2" y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-39" target="_XwHaG1tFQSUWYc1SFXW-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-66" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;labelBackgroundColor=none;" vertex="1" connectable="0" parent="_XwHaG1tFQSUWYc1SFXW-49">
+          <mxGeometry x="-0.1454" y="-2" relative="1" as="geometry">
+            <mxPoint x="-17" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-39" value="Validation passed for employeeName" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="75.32000000000001" y="516.5" width="146.88" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-41" target="_XwHaG1tFQSUWYc1SFXW-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-41" value="Output:&lt;br&gt;Please enter your full name" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="24.46" y="320" width="248.56" height="57.5" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-43" target="_XwHaG1tFQSUWYc1SFXW-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-43" value="&lt;div&gt;Input:&lt;/div&gt;&lt;div&gt;Assign to employeeName&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="58.12" y="420" width="181.24" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-48" value="A" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="118.14" y="700" width="61.24" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-50" value="A" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="543.66" y="30" width="61.24" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-51" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=14;" vertex="1" connectable="0" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="660.0000000000002" y="348.75" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-53" target="_XwHaG1tFQSUWYc1SFXW-92">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="574.3000000000003" y="483.75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-67" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=14;" vertex="1" connectable="0" parent="_XwHaG1tFQSUWYc1SFXW-52">
+          <mxGeometry x="0.0221" y="-1" relative="1" as="geometry">
+            <mxPoint x="-23" y="-17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-53" target="_XwHaG1tFQSUWYc1SFXW-70">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="796" y="368" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-53" value="Validation passed for&lt;br&gt;employeeAge" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="500.86" y="300" width="146.88" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-55" target="_XwHaG1tFQSUWYc1SFXW-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-55" value="Output:&lt;br&gt;Please enter your age" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="450" y="123.75" width="248.56" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-57" target="_XwHaG1tFQSUWYc1SFXW-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-57" value="&lt;div&gt;Input:&lt;/div&gt;&lt;div&gt;Assign to employeeAge&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="479.62" y="213.75" width="189.36" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=-0.011;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="_XwHaG1tFQSUWYc1SFXW-55">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="574.3000000000002" y="90" as="sourcePoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-68" target="_XwHaG1tFQSUWYc1SFXW-41">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="358" y="300" />
+              <mxPoint x="149" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-68" value="Output:&lt;br&gt;Empty inputs not &lt;br&gt;accepted" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="273.02" y="422.5" width="170" height="57.5" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.501;entryY=-0.015;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-70" target="_XwHaG1tFQSUWYc1SFXW-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-70" value="Output:&lt;br&gt;Letters not allowed in age" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="681.74" y="213.75" width="228.26" height="57.5" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-86" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=14;" vertex="1" connectable="0" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="681.7400000000002" y="720.5" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-87" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-90">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="574.3000000000003" y="840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-88" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=14;" vertex="1" connectable="0" parent="_XwHaG1tFQSUWYc1SFXW-87">
+          <mxGeometry x="0.0221" y="-1" relative="1" as="geometry">
+            <mxPoint x="-20" y="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-90" target="_XwHaG1tFQSUWYc1SFXW-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-90" value="Validation passed for employeeNumber" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="500.86" y="640" width="146.88" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-91" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-92" target="_XwHaG1tFQSUWYc1SFXW-94">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-92" value="Output:&lt;br&gt;Please enter your employee&lt;br&gt;number" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="450.02" y="470" width="248.56" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-93" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-94" target="_XwHaG1tFQSUWYc1SFXW-90">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-94" value="&lt;div&gt;Input:&lt;/div&gt;&lt;div&gt;Assign to employeeNumber&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="459.11" y="555" width="230.38" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-98" target="_XwHaG1tFQSUWYc1SFXW-92">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="796" y="450" />
+              <mxPoint x="574" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-98" value="Output:&lt;br&gt;Letters not allowed in &lt;br&gt;employee numbers" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="711.07" y="557.5" width="178.26" height="57.5" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-103" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-102">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="574.230769230769" y="940" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-102" value="Set newEmployee to new Employee&lt;br&gt;with employeeName, employeeAge, employeeNumber" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="437.51" y="810" width="273.58" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-107" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="_XwHaG1tFQSUWYc1SFXW-105" target="_XwHaG1tFQSUWYc1SFXW-106">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-105" value="Output:&lt;br&gt;Hi employeeName, Your employee acccount&lt;br&gt; employeeNumber has been created. &lt;br&gt;Your unique pin number is newEmployee.pinNum" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="356.42" y="880" width="435.71" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_XwHaG1tFQSUWYc1SFXW-106" value="End" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="524.28" y="990" width="100" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
