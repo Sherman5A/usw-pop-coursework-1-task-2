@@ -16,6 +16,13 @@ nocite: |
 
 ## Part 1 User Login and Unique Pin
 
+**Design Decisions**
+
+When creating the design for this program, the separation of user interface and data was important;
+therefore, `Employee` and `UserInterface` were placed into separate entities which are controlled
+by `Main`. `UserInterface` can only provide or use data that `Employee` allows it to, ensuring
+data that everything is encapsulated.
+
 ![Flowchart of Main](flowcharts/task-1/images/main.png)
 
 ![Flowchart of Employee](flowcharts/task-1/images/employee.png)
@@ -23,6 +30,21 @@ nocite: |
 ![Flowchart of UserInterface](flowcharts/task-1/images/userInterface.png)
 
 ## Part 2 - Employee Pay Calculator
+
+**Design Decisions:**
+
+Several important design choices were made prior to starting on the flowcharts and program. The
+following choices were made, salary calculations would be created through a process of test-driven
+development to ensure that they carried out the correct calculations. This necessitated the use of
+dependency injection in areas related to input and output as the tests had to be consistent and
+unaffected by changes to user input or files. Therefore, the flowcharts had to display dependency
+injection through providing object-oriented classes as arguments.
+
+Moreover, separating control of the program was an important design goal. Classes associated with
+input and output should only serve as constructors to their calling class, such as `Main`. They should
+not perform any substantial data operations; said data operations should happen in their related
+classes, such as `Employee`, and `Salary`.
+
 
 ![Flowchart of Main](flowcharts/task-2/images/main.png)
 
@@ -41,14 +63,6 @@ nocite: |
 ![2nd Flowchart of UserInterface](flowcharts/task-2/images/userInterface2.png)
 
 ![3rd Flowchart of UserInterface](flowcharts/task-2/images/userInterface3.png)
-
-**Design decisions:**
-
-Several important design choices were made prior to starting on the flowcharts and program. The
-following choices were made, salary calculations would be created through a process of test-driven 
-development to ensure that they carried out the correct calculations. This necessitated the use of 
-dependency injection in areas related to input and output as the tests had to be consistent,
-unaffected by changes to user input or files.
 
 # Part B - Programming Task
 
@@ -300,55 +314,29 @@ Please enter your employee number:
 **Unit Test Outputs,**
 
 ```
-[INFO] ------------------------------------------------------
+[INFO] -------------------------------------------------------
 [INFO]  T E S T S
-[INFO] ------------------------------------------------------
-[INFO] Running usw.employeepay.RateIOTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in usw.employeepay.RateIOTest
-[INFO] Running usw.employeepay.UserInterfaceTest
-Welcome to USW Employee Salary Calculator
------------------------------------------
-Employee Name: Employee number: [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in usw.employeepay.UserInterfaceTest
-[INFO] Running usw.employeepay.SalaryTest
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in usw.employeepay.SalaryTest
+[INFO] -------------------------------------------------------
+[INFO] Running usw.employeelogin.EmployeeTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s - in usw.employeelogin.EmployeeTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
-[INFO] ------------------------------------------------------
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ pop-coursework ---
+[INFO] Building jar: /home/jake/Code/usw/pop-coursework-1/target/pop-coursework-1.0-SNAPSHOT.jar
+[INFO] -------------------------------------------------------
 [INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------
-[INFO] Total time:  1.859 s
-[INFO] Finished at: 2023-12-01T11:10:30Z
-[INFO] ------------------------------------------------------
+[INFO] -------------------------------------------------------
+[INFO] Total time:  3.098 s
+[INFO] Finished at: 2023-12-08T17:37:55Z
+[INFO] -------------------------------------------------------
 ```
 
-These tests include:
-
-- RateIO 
-    - CSV tax bands
-    - CSV NI bands
-    - CSV pension bands
-    - CSV parking fee
-- Salary
-    - Calculate monthly salary
-    - Calculate and apply parking charge
-    - Calculate taxable amount
-    - Calculate total deductions
-    - Calculate and apply national insurance
-    - Calculate net salary
-    - Calculate and apply income tax
-    - Calculate and apply teachers pension
-- UserInterface
-    - Valid input in name field
-
-All tests used the specification examples as test values. 
-
-Salary tests use a mock implementation of the interface `iRateIO` based on the coursework 
-specification to avoid failing tests due to a change in the `RateIO` CSV file.
-
-
+This test determines if the employee's pin is calculated correctly. Two sets of test data are
+used; data that results in short pin, and data that generates a longer pin. 
 
 ## Part 2 - Employee Pay Calculator
 
@@ -732,7 +720,15 @@ public class Salary {
         this.rateIO = rateIO;
     }
 
+    /**
+     * Converts a yearly BigDecimal amount into its monthly amount and 
+     * rounds to 2 D.P
+     * @param amount Value to divide by 12
+     * @return BigDecimal containing the value divided by 12 and
+     * rounded
+     */
     public static BigDecimal convertMonthly(BigDecimal amount) {
+        // Divide and round to 2 d.p with standard maths rounding
         return amount.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
     }
 
@@ -792,7 +788,8 @@ public class Salary {
         BigDecimal totalPayment = new BigDecimal("0");
         BigDecimal previousBracket = new BigDecimal("0");
 
-        for (Map.Entry<BigDecimal, BigDecimal> entry : paymentBands.entrySet()) {
+        for (Map.Entry<BigDecimal, BigDecimal> entry : 
+            paymentBands.entrySet()) {
             BigDecimal currentBracket = entry.getKey();
             BigDecimal bracketRate = entry.getValue;
 
@@ -806,8 +803,15 @@ public class Salary {
                  * (income - previousBand) * taxRate
                  */
                 totalPayment = totalPayment.add(
-                    income.subtract(previousBracket).multiply(bracketRate).setScale(2,RoundingMode.HALF_UP)
+                    income.subtract(
+                        previousBracket
+                    ).multiply(
+                        bracketRate
+                    ).setScale(
+                        2, RoundingMode.HALF_UP
+                    )
                 );
+
             } else if (income.compareTo(entry.getKey()) > 0) {
                 /* If the income is greater than the current 
                  * payment band 
@@ -817,24 +821,37 @@ public class Salary {
                  * (currentBracket - previousBand) * taxRate
                  * It then rounds to 2 decimal places
                  */
-                totalPayment = totalPayment.add((
-                    entry.getKey().subtract(previousBracket)).multiply(
-                        entry.getValue()).setScale(2, RoundingMode.HALF_UP)
+                totalPayment = totalPayment.add(
+                    (entry.getKey().subtract(
+                        previousBracket
+                    )).multiply(
+                        entry.getValue()
+                    ).setScale(
+                        2, RoundingMode.HALF_UP
+                    )
                 );
 
-            } else if ((income.compareTo(previousBracket) > 0) && (income.compareTo(entry.getKey()) < 0)) {
+            } else if ((income.compareTo(previousBracket) > 0) && 
+                      (income.compareTo(entry.getKey()) < 0)) 
+            {
                 /* If the income is smaller than the current payment 
                  * band 
                  */
 
                 /* Get the leftover money in the band */
-                BigDecimal bracketAmount = income.subtract(previousBracket);
+                BigDecimal bracketAmount = income.subtract(
+                    previousBracket
+                );
                 /* apply tax to the leftover amount in the band
                  * totalPayment = totalPayment +
                  * (leftoverAmount * taxRate)
                  */
                 totalPayment = totalPayment.add(
-                    bracketAmount.multiply(entry.getValue()).setScale(2, RoundingMode.HALF_UP)
+                    bracketAmount.multiply(
+                        entry.getValue()
+                    ).setScale(
+                        2, RoundingMode.HALF_UP
+                    )
                 );
                 /* Since income is smaller than current band, won't 
                  * make it to next band, break out of loop 
@@ -943,9 +960,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class RateIO implements iRateIO {
-    private final LinkedHashMap<BigDecimal, BigDecimal> taxBands = new LinkedHashMap<>();
-    private final LinkedHashMap<BigDecimal, BigDecimal> pensionBands = new LinkedHashMap<>();
-    private final LinkedHashMap<BigDecimal, BigDecimal> nationalInsurance = new LinkedHashMap<>();
+    private final LinkedHashMap<BigDecimal, BigDecimal> taxBands = 
+        new LinkedHashMap<>();
+    private final LinkedHashMap<BigDecimal, BigDecimal> pensionBands = 
+        new LinkedHashMap<>();
+    private final LinkedHashMap<BigDecimal, BigDecimal> 
+        nationalInsurance = new LinkedHashMap<>();
     private BigDecimal monthlyParking;
 
     /**
@@ -990,7 +1010,8 @@ public class RateIO implements iRateIO {
         return taxBands;
     }
 
-    public LinkedHashMap<BigDecimal, BigDecimal> getNationalInsurance() {
+    public LinkedHashMap<BigDecimal, BigDecimal> getNationalInsurance()
+    {
         return nationalInsurance;
     }
 
@@ -1002,7 +1023,6 @@ public class RateIO implements iRateIO {
         return monthlyParking;
     }
 }
-
 ```
 
 ### Program Unit Tests
@@ -1023,7 +1043,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SalaryTest {
 
+    /* Use the fake rateIO, changing CSV won't mess up unit tests */
     TestingFakeRateIO testingRateIO = new TestingFakeRateIO();
+
+    /* Various salaries to test different tax bands */
     Salary testSalary = new Salary(
         new BigDecimal("45000"), testingRateIO
     );
@@ -1031,8 +1054,8 @@ class SalaryTest {
         new BigDecimal("50000"), testingRateIO
     );
     Salary testSalaryLarge = new Salary(
-        new BigDecimal("140000"), testingRateIO)
-    ;
+        new BigDecimal("140000"), testingRateIO
+    );
 
     @Test
     @DisplayName("Calculate monthly salary")
@@ -1040,14 +1063,14 @@ class SalaryTest {
         BigDecimal expectedMonthlySalary2 = new BigDecimal("3750");
 
         assertEquals(0, expectedMonthlySalary2.compareTo(
-            testSalary.getMonthlySalary())
-        );
+            testSalary.getMonthlySalary()
+        ));
 
         BigDecimal expectedMonthlySalary1 = new BigDecimal("4166.67");
 
         assertEquals(0, expectedMonthlySalary1.compareTo(
-            testSalaryDecimal.getMonthlySalary())
-        );
+            testSalaryDecimal.getMonthlySalary()
+        ));
 
     }
 
@@ -1057,41 +1080,41 @@ class SalaryTest {
         BigDecimal expectedTaxableAmount = new BigDecimal("32430.00");
 
         assertEquals(0, expectedTaxableAmount.compareTo(
-            testSalary.getTaxableAmount())
-        );
+            testSalary.getTaxableAmount()
+        ));
     }
 
     @Test
-    @DisplayName("Calculate income tax")
+    @DisplayName("Calculate and apply income tax")
     public void calculateIncomeTax() {
         BigDecimal expectedTax = new BigDecimal("6486");
         testSalary.applyIncomeTax();
 
         assertEquals(0, expectedTax.compareTo(
-            testSalary.getIncomeTaxAmount())
-        );
+            testSalary.getIncomeTaxAmount()
+        ));
 
         BigDecimal expectedTaxLarge = new BigDecimal("44175");
         testSalaryLarge.applyIncomeTax();
 
         assertEquals(0, expectedTaxLarge.compareTo(
-            testSalaryLarge.getIncomeTaxAmount())
-        );
+            testSalaryLarge.getIncomeTaxAmount()
+        ));
     }
 
     @Test
-    @DisplayName("Calculate national insurance")
+    @DisplayName("Calculate and apply national insurance")
     void calculateNationalInsurance() {
         BigDecimal expectedNI = new BigDecimal("4251.84");
         testSalary.applyNationalInsurance();
 
         assertEquals(0, expectedNI.compareTo(
-            testSalary.getNIAmount())
-        );
+            testSalary.getNIAmount()
+        ));
     }
 
     @Test
-    @DisplayName("Parking charge applies")
+    @DisplayName("Calculate and apply parking charge")
     void useParkingCharge() {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         BigDecimal monthlyParking = new BigDecimal("120.00");
@@ -1099,45 +1122,45 @@ class SalaryTest {
         testSalary.applyParkingCharge();
 
         assertEquals(0, monthlyParking.compareTo(
-            testSalary.getTotalParking())
-        );
+            testSalary.getTotalParking()
+        ));
         assertEquals(0, expectedNetSalary.compareTo(
-            testSalary.getNetSalary())
-        );
+            testSalary.getNetSalary()
+        ));
     }
 
     @Test
-    @DisplayName("Total teachers pension")
+    @DisplayName("Calculate and apply teachers pension")
     void getTotalTeachersPension() {
         BigDecimal expectedTeachersPension = new BigDecimal("3501.76");
         testSalary.applyPension();
 
         assertEquals(0, expectedTeachersPension.compareTo(
-            testSalary.getPensionAmount())
-        );
+            testSalary.getPensionAmount()
+        ));
     }
 
     @Test
-    @DisplayName("Total deductions")
+    @DisplayName("Calculate total deductions")
     void getTotalDeductions() {
         BigDecimal expectedDeductions = new BigDecimal("10737.84");
         testSalary.applyMandatoryDeductions();
 
         assertEquals(0, expectedDeductions.compareTo(
-            testSalary.getTotalDeductions())
-        );
+            testSalary.getTotalDeductions()
+        ));
     }
 
     @Test
-    @DisplayName("Net salary")
+    @DisplayName("Calculate net salary")
     void getNetSalary() {
         BigDecimal expectedNetSalary = new BigDecimal("34142.16");
         testSalary.applyMandatoryDeductions();
         testSalary.applyParkingCharge();
 
         assertEquals(0, expectedNetSalary.compareTo(
-            testSalary.getNetSalary())
-        );
+            testSalary.getNetSalary()
+        ));
     }
 }
 ```
@@ -1176,7 +1199,9 @@ class RateIOTest {
     @Test
     @DisplayName("CSV tax bands")
     void getTaxBands() {
-        LinkedHashMap<BigDecimal, BigDecimal> expectedTaxBands = new LinkedHashMap<>();
+        /* Create test LinkedHashMap to check against read file */
+        LinkedHashMap<BigDecimal, BigDecimal> expectedTaxBands = 
+            new LinkedHashMap<>();
         expectedTaxBands.put(
             new BigDecimal("12570"), new BigDecimal("0.00")
         );
@@ -1193,9 +1218,11 @@ class RateIOTest {
     }
 
     @Test
-    @DisplayName("NI tax bands")
+    @DisplayName("CSV NI bands")
     void getNationalInsurance() {
-        LinkedHashMap<BigDecimal, BigDecimal> expectedNationalInsurance = new LinkedHashMap<>();
+        /* Create test LinkedHashMap to check against read file */
+        LinkedHashMap<BigDecimal, BigDecimal> expectedNationalInsurance = 
+            new LinkedHashMap<>();
         expectedNationalInsurance.put(
             new BigDecimal("9568"), new BigDecimal("0.00")
         );
@@ -1206,9 +1233,11 @@ class RateIOTest {
     }
 
     @Test
-    @DisplayName("Pension tax bands")
+    @DisplayName("CSV pension bands")
     void getPensionBands() {
-        LinkedHashMap<BigDecimal, BigDecimal> expectedPensionBands = new LinkedHashMap<>();
+        /* Create test LinkedHashMap to check against read file */
+        LinkedHashMap<BigDecimal, BigDecimal> expectedPensionBands = 
+            new LinkedHashMap<>();
 
         expectedPensionBands.put(
             new BigDecimal("32135.99"), new BigDecimal("0.074")
@@ -1234,7 +1263,9 @@ class RateIOTest {
     @Test
     @DisplayName("CSV parking fee")
     void getMonthlyParking() {
+        /* Test BigDecimal to compare to read file */
         BigDecimal expectedMonthlyParking = new BigDecimal("10.00");
+        /* Check if they are equal */
         assertEquals(0, expectedMonthlyParking.compareTo(
             rateIO.getMonthlyParking())
         );
@@ -1340,25 +1371,28 @@ Yearly salary:
 **Unit Test Outputs,**
 
 ```
-[INFO] -------------------------------------------------------
+[INFO] ------------------------------------------------------
 [INFO]  T E S T S
-[INFO] -------------------------------------------------------
-[INFO] Running usw.employeelogin.EmployeeTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s - in usw.employeelogin.EmployeeTest
+[INFO] ------------------------------------------------------
+[INFO] Running usw.employeepay.RateIOTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in usw.employeepay.RateIOTest
+[INFO] Running usw.employeepay.UserInterfaceTest
+Welcome to USW Employee Salary Calculator
+-----------------------------------------
+Employee Name: Employee number: [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in usw.employeepay.UserInterfaceTest
+[INFO] Running usw.employeepay.SalaryTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in usw.employeepay.SalaryTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
-[INFO] 
-[INFO] --- jar:3.3.0:jar (default-jar) @ pop-coursework ---
-[INFO] Building jar: /home/jake/Code/usw/pop-coursework-1/target/pop-coursework-1.0-SNAPSHOT.jar
-[INFO] -------------------------------------------------------
+[INFO] ------------------------------------------------------
 [INFO] BUILD SUCCESS
-[INFO] -------------------------------------------------------
-[INFO] Total time:  3.098 s
-[INFO] Finished at: 2023-12-08T17:37:55Z
-[INFO] -------------------------------------------------------
+[INFO] ------------------------------------------------------
+[INFO] Total time:  1.859 s
+[INFO] Finished at: 2023-12-01T11:10:30Z
+[INFO] ------------------------------------------------------
 ```
 
 These tests include:

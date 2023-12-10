@@ -29,6 +29,7 @@ class RateIOTest {
     @Test
     @DisplayName("CSV tax bands")
     void getTaxBands() {
+        /* Create test LinkedHashMap to check against read file */
         LinkedHashMap<BigDecimal, BigDecimal> expectedTaxBands = new LinkedHashMap<>();
         expectedTaxBands.put(new BigDecimal("12570"), new BigDecimal("0.00"));
         expectedTaxBands.put(new BigDecimal("50270"), new BigDecimal("0.20"));
@@ -40,6 +41,7 @@ class RateIOTest {
     @Test
     @DisplayName("CSV NI bands")
     void getNationalInsurance() {
+        /* Create test LinkedHashMap to check against read file */
         LinkedHashMap<BigDecimal, BigDecimal> expectedNationalInsurance = new LinkedHashMap<>();
         expectedNationalInsurance.put(new BigDecimal("9568"), new BigDecimal("0.00"));
         expectedNationalInsurance.put(new BigDecimal("-1"), new BigDecimal("0.12"));
@@ -49,6 +51,7 @@ class RateIOTest {
     @Test
     @DisplayName("CSV pension bands")
     void getPensionBands() {
+        /* Create test LinkedHashMap to check against read file */
         LinkedHashMap<BigDecimal, BigDecimal> expectedPensionBands = new LinkedHashMap<>();
         expectedPensionBands.put(new BigDecimal("32135.99"), new BigDecimal("0.074"));
         expectedPensionBands.put(new BigDecimal("43259.99"), new BigDecimal("0.086"));
@@ -62,7 +65,9 @@ class RateIOTest {
     @Test
     @DisplayName("CSV parking fee")
     void getMonthlyParking() {
+        /* Test BigDecimal to compare to read file */
         BigDecimal expectedMonthlyParking = new BigDecimal("10.00");
+        /* Check if they are equal */
         assertEquals(0, expectedMonthlyParking.compareTo(rateIO.getMonthlyParking()));
     }
 }

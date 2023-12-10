@@ -31,7 +31,13 @@ public class Salary {
         this.rateIO = rateIO;
     }
 
+    /**
+     * Converts a yearly BigDecimal amount into its monthly amount and rounds to 2 D.P
+     * @param amount Value to divide by 12
+     * @return BigDecimal containing the value divided by 12 and rounded
+     */
     public static BigDecimal convertMonthly(BigDecimal amount) {
+        // Divide and round to 2 d.p with standard maths rounding
         return amount.divide(new BigDecimal("12"), 2, RoundingMode.HALF_UP);
     }
 
