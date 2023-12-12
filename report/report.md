@@ -33,17 +33,17 @@ data that everything is encapsulated.
 
 **Design Decisions:**
 
-Several important design choices were made prior to starting on the flowcharts and program. The
-following choices were made. The initial designs would include the additional features to reduce
-refactoring and rewriting of code. This increased complexity as the tax calculation implementation
-had to be dynamic, adapting to different numbers and sizes of brackets. To adjust for this,
+Several important design choices were made before starting on the flowcharts and program. The
+following choices were made. Initial designs would include the additional features to reduce
+refactoring and rewriting of code. This increased complexity as the implementation of the tax band
+calculator had to be dynamic, adapting to different numbers and sizes of brackets. To adjust for this,
 test-driven development would be used when programming areas related to salary and file IO, allowing 
-for quick and easy testing of the mathematical components to correct manually calculated test values. 
-This increased my development speed as these tests could easily be quickly run with little user
-input. However, implementing effective unit tests requires dependency injection with mocked fake
-classes in methods related to file reading. The mock classes and unit tests have not been planned
-through flowcharts as they only serve ease development. Therefore, an effort was made to show
-dependency injection in the flow charts' argument comments.
+for quick and easy testing of the mathematical methods to correct, manually calculated test values. 
+This increased development speed as these tests run with little user input. However, implementing 
+effective unit tests requires dependency injection with mocked fake implementations in classes that
+rely on reading files, such as Salary. The mock classes and unit tests have not been planned
+through flowcharts as they only serve to ease development. Therefore, effort was made during planning
+to show dependency injection in the flow charts.
 
 Moreover, separating control of the program was an important design goal. Classes associated with
 input and output should only serve as constructors to their calling class, such as `Main`. They should
