@@ -14,7 +14,7 @@ nocite: |
 
 # Part A - Design Task
 
-## Part 1 User Login and Unique Pin
+## Task 1 User Login and Unique Pin
 
 **Design Decisions**
 
@@ -29,22 +29,26 @@ data that everything is encapsulated.
 
 ![Flowchart of UserInterface](flowcharts/task-1/images/userInterface.png)
 
-## Part 2 - Employee Pay Calculator
+## Task 2 Employee Pay Calculator
 
 **Design Decisions:**
 
 Several important design choices were made prior to starting on the flowcharts and program. The
-following choices were made, salary calculations would be created through a process of test-driven
-development to ensure that they carried out the correct calculations. This necessitated the use of
-dependency injection in areas related to input and output as the tests had to be consistent and
-unaffected by changes to user input or files. Therefore, the flowcharts had to display dependency
-injection through providing object-oriented classes as arguments.
+following choices were made. The initial designs would include the additional features to reduce
+refactoring and rewriting of code. This increased complexity as the tax calculation implementation
+had to be dynamic, adapting to different numbers and sizes of brackets. To adjust for this,
+test-driven development would be used when programming areas related to salary and file IO, allowing 
+for quick and easy testing of the mathematical components to correct manually calculated test values. 
+This increased my development speed as these tests could easily be quickly run with little user
+input. However, implementing effective unit tests requires dependency injection with mocked fake
+classes in methods related to file reading. The mock classes and unit tests have not been planned
+through flowcharts as they only serve ease development. Therefore, an effort was made to show
+dependency injection in the flow charts' argument comments.
 
 Moreover, separating control of the program was an important design goal. Classes associated with
 input and output should only serve as constructors to their calling class, such as `Main`. They should
 not perform any substantial data operations; said data operations should happen in their related
 classes, such as `Employee`, and `Salary`.
-
 
 ![Flowchart of Main](flowcharts/task-2/images/main.png)
 
@@ -66,7 +70,7 @@ classes, such as `Employee`, and `Salary`.
 
 # Part B - Programming Task
 
-## Part 1 User Login and Unique Pin
+## Task 1 User Login and Unique Pin
 
 ### Source Code
 
@@ -260,6 +264,7 @@ class EmployeeTest {
     }
 }
 ```
+
 ### Program Outputs
 
 Running `Main.java` with typical inputs,
@@ -338,7 +343,7 @@ Please enter your employee number:
 This test determines if the employee's pin is calculated correctly. Two sets of test data are
 used; data that results in short pin, and data that generates a longer pin. 
 
-## Part 2 - Employee Pay Calculator
+## Task 2 - Employee Pay Calculator
 
 ### Program Source Code
  
@@ -1304,6 +1309,35 @@ class UserInterfaceTest {
         userInput.createEmployeeLoop();
     }
 }
+```
+
+### CSV File
+
+The CSV file used the following format scheme for band based deductions,
+
+> deduction type, bracket upper bound, deduction percentage
+
+-1 in the bracket upper bound denotes an overflow bracket. This means that the bracket continues
+indefinitely.
+
+The parking charge, which can not be applied through band calculations, uses the below format,
+
+> deduction type, monthly amount
+
+```
+tax,12570,0.00
+tax,50270,0.20
+tax,125140,0.40
+tax,-1,0.45
+pension,32135.99,0.074
+pension,43259.99,0.086
+pension,51292.99,0.096
+pension,67980.99,0.102
+pension,92597.99,0.113
+pension,-1,0.117
+nationalInsurance,9568,0.00
+nationalInsurance,-1,0.12
+parking,10
 ```
 
 ### Program Outputs
